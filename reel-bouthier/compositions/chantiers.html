@@ -37,7 +37,7 @@
     ];
     P.forEach(([s, x, y, z, ry]) => gsap.set(s, { x: x, y: y, z: z, rotationY: ry }));
     gsap.set("#ch-p1", { x: -760 }); gsap.set("#ch-p3", { x: 80 });
-    const K = /*K*/{"D": 3.92, "b1": 0.3, "b2": 1.68}/*K*/;
+    const K = /*K*/{"D": 4.21, "b1": 0.3, "b2": 1.82}/*K*/;
     const tl = gsap.timeline({ paused: true });
     tl.fromTo("#ch-fond", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0);
     tl.fromTo("#ch-cam", { z: -600 }, { z: 4250, duration: K.D - 0.3, ease: "power2.inOut" }, 0);

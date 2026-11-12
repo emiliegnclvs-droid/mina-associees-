@@ -55,7 +55,7 @@ sfx = [("sfx-w1", "whoosh.mp3", starts[1] - 0.15, 0.5, 5), ("sfx-w2", "whoosh-sh
        ("sfx-w3", "whoosh-cinematic.mp3", starts[3] - 0.15, 0.45, 6), ("sfx-w4", "whoosh.mp3", starts[3] + K["ecrans"]["L"] - 0.25, 0.5, 5),
        ("sfx-w5", "whoosh-short.mp3", starts[4] - 0.1, 0.5, 6), ("sfx-impact", "impact-bass-1.mp3", starts[5] + 0.05, 0.6, 5)]
 tags = [f'      <audio id="musique" class="clip" src="assets/bgm/musique.wav" data-duration="{TOTAL}" data-start="0" data-track-index="4" data-volume="0.3"></audio>']
-tags += [f'      <audio id="voix-{i}" class="clip" src="assets/voice/{i}.wav" data-duration="{r(V[i]) if False else round(V[i],3)}" data-start="{r(a)}" data-track-index="3" data-volume="1.6"></audio>' for i, a in voix]
+tags += [f'      <audio id="voix-{i}" class="clip" src="assets/voice/{i}.wav" data-duration="{r(V[i]) if False else round(V[i],3)}" data-start="{r(a)}" data-track-index="3" data-volume="1.2"></audio>' for i, a in voix]
 tags += [f'      <audio id="{i}" class="clip" src="assets/sfx/{f}" data-duration="{round(dur("assets/sfx/" + f), 3)}" data-start="{r(a)}" data-track-index="{tr}" data-volume="{v}"></audio>' for i, f, a, v, tr in sfx]
 h = h.replace("    </div>\n    <script>", "\n".join(tags) + "\n    </div>\n    <script>", 1)
 open("index.html", "w").write(h)
