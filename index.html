@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mina Associées — Photographie & Community Management</title>
+  <meta name="description" content="Mina Associées : photographie professionnelle et community management pour les marques, commerces et indépendants.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="nav">
+    <a href="#accueil" class="logo">Mina <span>Associées</span></a>
+    <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
+    <nav class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#apropos">À propos</a>
+      <a href="#tarifs">Formules</a>
+      <a href="#contact" class="btn btn-small">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- ACCUEIL -->
+    <section id="accueil" class="hero">
+      <div class="hero-text">
+        <p class="eyebrow">Photographie · Community Management</p>
+        <h1>Des images qui racontent votre histoire,<br><em>des réseaux qui la font vivre.</em></h1>
+        <p class="lead">Mina Associées accompagne les marques, commerces et indépendants pour créer des visuels authentiques et animer leur présence sur les réseaux sociaux.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn">Demander un devis</a>
+          <a href="#portfolio" class="btn btn-ghost">Voir mon travail</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="photo ph-1" role="img" aria-label="Photo à remplacer"></div>
+        <div class="photo ph-2" role="img" aria-label="Photo à remplacer"></div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section">
+      <p class="eyebrow">Ce que je propose</p>
+      <h2>Deux savoir-faire, une seule vision</h2>
+      <div class="cards">
+        <article class="card">
+          <div class="card-icon">📷</div>
+          <h3>Photographie</h3>
+          <p>Des photos professionnelles qui mettent en valeur votre activité.</p>
+          <ul>
+            <li>Portraits & photos corporate</li>
+            <li>Photos produits & culinaires</li>
+            <li>Reportages d'événements</li>
+            <li>Shootings pour réseaux sociaux</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="card-icon">📱</div>
+          <h3>Community Management</h3>
+          <p>Une présence en ligne régulière, cohérente et engageante.</p>
+          <ul>
+            <li>Stratégie & ligne éditoriale</li>
+            <li>Création et planification des publications</li>
+            <li>Animation de communauté</li>
+            <li>Instagram, Facebook, LinkedIn, TikTok</li>
+          </ul>
+        </article>
+        <article class="card card-accent">
+          <div class="card-icon">✨</div>
+          <h3>Pack complet</h3>
+          <p>Le meilleur des deux : je réalise vos photos <strong>et</strong> je les publie pour vous. Un contenu 100 % unique, à votre image.</p>
+          <a href="#contact" class="link">En parler ensemble →</a>
+        </article>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="section section-alt">
+      <p class="eyebrow">Portfolio</p>
+      <h2>Quelques réalisations</h2>
+      <div class="filters">
+        <button class="filter active" data-filter="all">Tout</button>
+        <button class="filter" data-filter="portrait">Portraits</button>
+        <button class="filter" data-filter="produit">Produits</button>
+        <button class="filter" data-filter="evenement">Événements</button>
+      </div>
+      <div class="gallery">
+        <figure class="g-item" data-cat="portrait"><div class="photo ph-3"></div><figcaption>Portrait — Nom du client</figcaption></figure>
+        <figure class="g-item tall" data-cat="produit"><div class="photo ph-4"></div><figcaption>Produits — Nom du client</figcaption></figure>
+        <figure class="g-item" data-cat="evenement"><div class="photo ph-5"></div><figcaption>Événement — Nom du client</figcaption></figure>
+        <figure class="g-item" data-cat="produit"><div class="photo ph-6"></div><figcaption>Produits — Nom du client</figcaption></figure>
+        <figure class="g-item tall" data-cat="portrait"><div class="photo ph-1"></div><figcaption>Portrait — Nom du client</figcaption></figure>
+        <figure class="g-item wide" data-cat="evenement"><div class="photo ph-2"></div><figcaption>Événement — Nom du client</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- A PROPOS -->
+    <section id="apropos" class="section about">
+      <div class="photo ph-portrait" role="img" aria-label="Votre portrait"></div>
+      <div>
+        <p class="eyebrow">À propos</p>
+        <h2>Bonjour, moi c'est [Prénom]</h2>
+        <p>Photographe et community manager, j'ai créé Mina Associées pour offrir aux entrepreneurs un accompagnement complet : de la prise de vue à la publication.</p>
+        <p>Ma conviction : une belle image ne suffit pas, il faut aussi savoir la raconter. Je prends le temps de comprendre votre activité et votre clientèle pour créer un contenu qui vous ressemble vraiment.</p>
+        <div class="stats">
+          <div><strong>[X]</strong><span>clients accompagnés</span></div>
+          <div><strong>[X]</strong><span>ans d'expérience</span></div>
+          <div><strong>[X]</strong><span>shootings réalisés</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMULES -->
+    <section id="tarifs" class="section section-alt">
+      <p class="eyebrow">Formules</p>
+      <h2>Des offres adaptées à vos besoins</h2>
+      <div class="cards pricing">
+        <article class="card">
+          <h3>Séance photo</h3>
+          <p class="price">À partir de <strong>[XX] €</strong></p>
+          <ul>
+            <li>1 à 2 h de shooting</li>
+            <li>Retouche professionnelle</li>
+            <li>Galerie en ligne HD</li>
+          </ul>
+        </article>
+        <article class="card card-accent">
+          <span class="badge">Le plus demandé</span>
+          <h3>Réseaux sociaux</h3>
+          <p class="price"><strong>[XX] €</strong> / mois</p>
+          <ul>
+            <li>[X] publications par mois</li>
+            <li>Rédaction & planification</li>
+            <li>Bilan mensuel des statistiques</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Pack complet</h3>
+          <p class="price"><strong>[XX] €</strong> / mois</p>
+          <ul>
+            <li>Shooting mensuel inclus</li>
+            <li>Gestion complète des réseaux</li>
+            <li>Stratégie personnalisée</li>
+          </ul>
+        </article>
+      </div>
+      <p class="note">Chaque projet est unique : contactez-moi pour un devis gratuit et personnalisé.</p>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section contact">
+      <div>
+        <p class="eyebrow">Contact</p>
+        <h2>Parlons de votre projet</h2>
+        <p>Une question, un projet, une envie de collaborer ? Écrivez-moi, je vous réponds sous 48 h.</p>
+        <ul class="contact-info">
+          <li>✉️ <a href="mailto:contact@exemple.fr">contact@exemple.fr</a></li>
+          <li>📞 06 00 00 00 00</li>
+          <li>📍 [Ville] et alentours</li>
+          <li>📸 <a href="#" target="_blank" rel="noopener">Instagram</a> · <a href="#" target="_blank" rel="noopener">LinkedIn</a></li>
+        </ul>
+      </div>
+      <form class="form" action="mailto:contact@exemple.fr" method="post" enctype="text/plain">
+        <label>Nom<input type="text" name="nom" required></label>
+        <label>E-mail<input type="email" name="email" required></label>
+        <label>Je suis intéressé·e par
+          <select name="service">
+            <option>Photographie</option>
+            <option>Community management</option>
+            <option>Pack complet</option>
+            <option>Autre</option>
+          </select>
+        </label>
+        <label>Message<textarea name="message" rows="5" required></textarea></label>
+        <button type="submit" class="btn">Envoyer</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p><strong>Mina Associées</strong> — Micro-entreprise · SIRET [à compléter]</p>
+    <p>© <span id="year"></span> Mina Associées. Tous droits réservés. · <a href="mentions-legales.html">Mentions légales</a></p>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const toggle = document.querySelector('.nav-toggle');
+    const links = document.querySelector('.nav-links');
+    toggle.addEventListener('click', () => {
+      const open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', open);
+    });
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+    document.querySelectorAll('.filter').forEach(btn => btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      document.querySelectorAll('.g-item').forEach(item => {
+        item.style.display = (f === 'all' || item.dataset.cat === f) ? '' : 'none';
+      });
+    }));
+  </script>
+</body>
+</html>
