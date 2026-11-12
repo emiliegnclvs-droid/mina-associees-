@@ -2,21 +2,17 @@
   <style>
     #root { position: absolute; inset: 0; overflow: hidden; background: #fff; }
     #fn-fond { position: absolute; inset: 0; background: #fff; }
-    #fn-logo { position: absolute; left: 310px; top: 210px; width: 460px; }
+    #fn-logo { position: absolute; left: 350px; top: 380px; width: 380px; }
     .bande-wrap { position: absolute; left: 0; width: 1080px; display: flex; justify-content: center; }
-    #fn-devis-w { top: 900px; transform: rotate(-2deg); }
+    #fn-devis-w { top: 950px; transform: rotate(-2deg); }
     #fn-devis { background: var(--violet); color: #fff; font-family: "Playfair Display", serif; font-style: italic; font-weight: 700;
       font-size: 68px; padding: 8px 48px 18px; box-shadow: 0 8px 24px rgba(42,28,63,0.3); }
     .fn-ligne { position: absolute; left: 0; width: 1080px; display: flex; justify-content: center; align-items: center; gap: 22px;
       color: var(--violet); font-family: "Montserrat", sans-serif; font-weight: 700; }
     .fn-ligne svg { flex: none; }
-    #fn-tel { top: 1050px; font-size: 76px; letter-spacing: 2px; }
-    #fn-mail { top: 1165px; font-size: 44px; }
-    #fn-site { top: 1240px; font-size: 44px; color: #5e3f8e; }
-    #fn-bas { position: absolute; left: 0; top: 1420px; width: 1080px; height: 500px; background: var(--violet); }
-    .fn-ic { position: absolute; top: 1480px; width: 150px; height: 150px; border-radius: 50%; background: #fff;
-      display: flex; align-items: center; justify-content: center; }
-    .fn-ic img { width: 104px; height: 104px; }
+    #fn-tel { top: 1090px; font-size: 76px; letter-spacing: 2px; }
+    #fn-mail { top: 1200px; font-size: 44px; }
+    #fn-site { top: 1270px; font-size: 44px; color: #5e3f8e; }
   </style>
   <div id="root" data-composition-id="fin" data-width="1080" data-height="1920">
     <div id="fn-fond"></div>
@@ -31,18 +27,11 @@
       <span id="fn-mail-txt" data-var-text="email">contact@bouthiersarl.fr</span>
     </div>
     <div id="fn-site" class="fn-ligne"><span id="fn-site-txt" data-var-text="site">bouthier-sols.fr</span></div>
-    <div id="fn-bas" data-layout-ignore></div>
-    <div id="fn-i1" class="fn-ic" style="left:105px" data-layout-ignore><img src="assets/brand/carrelage.svg" alt="" /></div>
-    <div id="fn-i2" class="fn-ic" style="left:345px" data-layout-ignore><img src="assets/brand/dallage.svg" alt="" /></div>
-    <div id="fn-i3" class="fn-ic" style="left:585px" data-layout-ignore><img src="assets/brand/autres-sols.svg" alt="" /></div>
-    <div id="fn-i4" class="fn-ic" style="left:825px" data-layout-ignore><img src="assets/brand/salle-de-bain.svg" alt="" /></div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
     // Le logo se dévoile de haut en bas : les trois carreaux, puis le nom.
     tl.fromTo("#fn-logo", { clipPath: "inset(0 0 100% 0)", y: -24 }, { clipPath: "inset(0 0 0% 0)", y: 0, duration: 0.9, ease: "power2.inOut" }, 0.05);
-    tl.fromTo("#fn-bas", { y: 500 }, { y: 0, duration: 0.5, ease: "expo.out" }, 0.3);
-    tl.fromTo(".fn-ic", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.6)", stagger: 0.07 }, 0.5);
     tl.fromTo("#fn-devis", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.5)" }, 0.95);
     tl.fromTo("#fn-tel", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 1.2);
     tl.fromTo("#fn-mail", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 1.35);
