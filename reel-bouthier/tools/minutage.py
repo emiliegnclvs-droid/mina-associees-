@@ -34,8 +34,8 @@ scenes.append(("ecrans", t0, D)); K["ecrans"] = {"D": r(D), "L": r(L), "url": 1.
 t0 += D; voix.append(("e1", t0 + 0.35)); D = max(3.4, 0.35 + V["e1"] + 0.6)
 scenes.append(("chantiers", t0, D)); K["chantiers"] = {"D": r(D), "b1": 0.3, "b2": r(0.35 + V["e1"] * 0.45)}
 # 6. Fin
-t0 += D; voix.append(("f1", t0 + 0.3)); f2 = 0.3 + V["f1"] + 0.05; voix.append(("f2", t0 + f2))
-D = f2 + V["f2"] + 1.8; scenes.append(("fin", t0, D)); K["fin"] = {"D": r(D), "devis": r(0.4 + V["f1"] * 0.3), "tel": r(f2 + 0.3)}
+t0 += D; voix.append(("f1", t0 + 0.3)); f2 = 0.3 + V["f1"]
+D = f2 + 3.4; scenes.append(("fin", t0, D)); K["fin"] = {"D": r(D), "devis": r(0.3), "tel": r(f2 + 0.15)}
 TOTAL = r(t0 + D)
 
 for sid, k in K.items():
