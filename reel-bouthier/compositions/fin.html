@@ -31,11 +31,13 @@
   <script>
     const tl = gsap.timeline({ paused: true });
     // Le logo se dévoile de haut en bas : les trois carreaux, puis le nom.
-    tl.fromTo("#fn-logo", { clipPath: "inset(0 0 100% 0)", y: -24 }, { clipPath: "inset(0 0 0% 0)", y: 0, duration: 0.9, ease: "power2.inOut" }, 0.05);
-    tl.fromTo("#fn-devis", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.5)" }, 0.95);
-    tl.fromTo("#fn-tel", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 1.2);
-    tl.fromTo("#fn-mail", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 1.35);
-    tl.fromTo("#fn-site", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 1.5);
+    // Le logo arrive en 3D : il pivote face caméra en sortant de la profondeur.
+    tl.fromTo("#fn-fond", { opacity: 0 }, { opacity: 1, duration: 0.15 }, 0);
+    tl.fromTo("#fn-logo", { rotationY: -100, z: -900, transformPerspective: 1200, opacity: 0 }, { rotationY: 0, z: 0, opacity: 1, duration: 1.0, ease: "expo.out" }, 0.05);
+    tl.fromTo("#fn-devis", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.5)" }, 0.9);
+    tl.fromTo("#fn-tel", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 1.75);
+    tl.fromTo("#fn-mail", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 2.6);
+    tl.fromTo("#fn-site", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 2.8);
     window.__timelines["fin"] = tl;
   </script>
 </template>

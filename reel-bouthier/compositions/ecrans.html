@@ -1,0 +1,93 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; }
+    #ec-fond { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 40%, #6b4b9a 0%, #432a63 50%, #2a1c3f 100%); }
+    .ec-losange { position: absolute; width: 420px; height: 420px; border: 3px solid rgba(255,255,255,0.12); }
+    #ec-3d { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; perspective: 1800px; perspective-origin: 50% 35%; }
+
+    /* --- Ordinateur portable --- */
+    #ec-pc { position: absolute; left: 90px; top: 470px; width: 900px; height: 570px; transform-style: preserve-3d; }
+    #ec-ecran { position: absolute; left: 0; top: 0; width: 900px; height: 570px; transform-style: preserve-3d; }
+    #ec-ecran-dos { position: absolute; inset: 0; border-radius: 26px 26px 6px 6px; background: linear-gradient(160deg, #d9d6df, #a9a5b3); transform: translateZ(-8px) rotateY(180deg); backface-visibility: hidden; }
+    #ec-ecran-av { position: absolute; inset: 0; border-radius: 26px 26px 6px 6px; background: #121014; padding: 24px 24px 30px; backface-visibility: hidden; }
+    #ec-dalle { position: relative; width: 852px; height: 516px; overflow: hidden; background: #fff; }
+    #ec-site { position: absolute; left: 0; top: 0; width: 852px; }
+    #ec-base { position: absolute; left: -20px; top: 570px; width: 940px; height: 470px; border-radius: 6px 6px 30px 30px;
+      background: linear-gradient(180deg, #cfcbd6, #b3afbd); transform-style: preserve-3d; }
+    #ec-clavier { position: absolute; left: 70px; top: 36px; width: 800px; height: 230px; border-radius: 10px; background: #2a2730;
+      background-image: linear-gradient(90deg, rgba(255,255,255,0.08) 2px, transparent 2px), linear-gradient(0deg, rgba(255,255,255,0.08) 2px, transparent 2px);
+      background-size: 54px 54px; }
+    #ec-pave { position: absolute; left: 320px; top: 295px; width: 300px; height: 150px; border-radius: 14px; background: rgba(42,39,48,0.18); }
+
+    /* --- Téléphone --- */
+    #ec-tel { position: absolute; left: 255px; top: 330px; width: 570px; height: 1160px; transform-style: preserve-3d; }
+    .ec-tel-couche { position: absolute; inset: 0; border-radius: 80px; background: #1b1820; }
+    #ec-tel-dos { background: linear-gradient(150deg, #5e3f8e, #2a1c3f); transform: translateZ(-30px) rotateY(180deg); }
+    #ec-tel-av { padding: 22px; transform: translateZ(2px); box-shadow: inset 0 0 0 4px #3a3540; }
+    #ec-tel-dalle { position: relative; width: 526px; height: 1116px; border-radius: 60px; overflow: hidden; background: #fff; }
+    #ec-profil { position: absolute; left: 0; top: 0; width: 526px; }
+
+    .bande-wrap { position: absolute; left: 0; width: 1080px; display: flex; justify-content: center; }
+    .ec-bande { background: #fff; color: var(--violet); font-family: "Playfair Display", serif; font-style: italic;
+      font-size: 62px; padding: 10px 44px 18px; box-shadow: 0 14px 34px rgba(0,0,0,0.35); }
+    .ec-url { font-family: "Montserrat", sans-serif; font-style: normal; font-weight: 700; font-size: 58px; background: var(--violet); color: #fff;
+      border: 3px solid rgba(255,255,255,0.6); }
+    #ec-t1w { top: 250px; } #ec-u1w { top: 1420px; }
+    #ec-t2w { top: 210px; } #ec-u2w { top: 1530px; }
+  </style>
+  <div id="root" data-composition-id="ecrans" data-width="1080" data-height="1920">
+    <div id="ec-fond" data-layout-ignore>
+      <div class="ec-losange" style="left:-160px; top:300px; transform: rotate(45deg)"></div>
+      <div class="ec-losange" style="left:820px; top:1200px; transform: rotate(45deg)"></div>
+    </div>
+    <div id="ec-3d" data-layout-allow-overflow data-layout-allow-overlap>
+      <div id="ec-pc">
+        <div id="ec-base"><div id="ec-clavier"></div><div id="ec-pave"></div></div>
+        <div id="ec-ecran">
+          <div id="ec-ecran-dos"></div>
+          <div id="ec-ecran-av"><div id="ec-dalle"><img id="ec-site" src="assets/site/site-complet.jpg" alt="Site bouthier-sols.fr" /></div></div>
+        </div>
+      </div>
+      <div id="ec-tel">
+        <div id="ec-tel-c1" class="ec-tel-couche"></div>
+        <div id="ec-tel-c2" class="ec-tel-couche"></div>
+        <div id="ec-tel-c3" class="ec-tel-couche"></div>
+        <div id="ec-tel-dos" class="ec-tel-couche"></div>
+        <div id="ec-tel-av" class="ec-tel-couche"><div id="ec-tel-dalle"><img id="ec-profil" src="assets/insta/profil.jpg" alt="Profil Instagram Bouthier Pascal" /></div></div>
+      </div>
+    </div>
+    <div id="ec-t1w" class="bande-wrap"><div id="ec-t1" class="ec-bande">Nos réalisations en ligne</div></div>
+    <div id="ec-u1w" class="bande-wrap"><div id="ec-u1" class="ec-bande ec-url" data-var-text="site">bouthier-sols.fr</div></div>
+    <div id="ec-t2w" class="bande-wrap"><div id="ec-t2" class="ec-bande">Suivez nos chantiers</div></div>
+    <div id="ec-u2w" class="bande-wrap"><div id="ec-u2" class="ec-bande ec-url">sur Instagram</div></div>
+  </div>
+  <script>
+    // Volumes : la base de l'ordinateur est posée à plat, l'écran est articulé sur son bord bas.
+    gsap.set("#ec-base", { rotationX: 90, transformOrigin: "50% 0%" });
+    gsap.set("#ec-ecran", { transformOrigin: "50% 100%" });
+    gsap.set("#ec-tel-c1", { z: -8 }); gsap.set("#ec-tel-c2", { z: -16 }); gsap.set("#ec-tel-c3", { z: -24 });
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#ec-fond", { opacity: 0 }, { opacity: 1, duration: 0.25 }, 0);
+    // --- L'ordinateur arrive en tournant, s'ouvre, le site défile. ---
+    tl.fromTo("#ec-pc", { y: 900, rotationX: 10, rotationY: -60, z: -600 }, { y: 0, rotationX: -8, rotationY: -22, z: 0, duration: 0.9, ease: "expo.out" }, 0);
+    tl.fromTo("#ec-ecran", { rotationX: -88 }, { rotationX: 8, duration: 0.8, ease: "back.out(1.2)" }, 0.35);
+    tl.to("#ec-pc", { rotationY: 18, rotationX: -6, duration: 2.55, ease: "power1.inOut" }, 0.9);
+    tl.fromTo("#ec-site", { y: 0 }, { y: -1600, duration: 2.5, ease: "power2.inOut" }, 1.0);
+    tl.fromTo("#ec-t1", { rotationX: -90, transformPerspective: 800, opacity: 0 }, { rotationX: 0, opacity: 1, duration: 0.45, ease: "back.out(1.4)" }, 0.3);
+    tl.fromTo("#ec-u1", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.7)" }, 1.4);
+    // Passage : l'ordinateur se referme et file à gauche, le téléphone arrive de droite.
+    tl.to("#ec-ecran", { rotationX: -60, duration: 0.35, ease: "power2.in" }, 3.45);
+    tl.to("#ec-pc", { x: -1500, rotationY: -70, duration: 0.45, ease: "power3.in" }, 3.5);
+    tl.to("#ec-t1, #ec-u1", { opacity: 0, x: -300, duration: 0.3, ease: "power3.in" }, 3.5);
+    // --- Le téléphone pivote, le profil Instagram défile. ---
+    tl.fromTo("#ec-tel", { x: 1300, rotationY: 120, rotationZ: 12 }, { x: 0, rotationY: -18, rotationZ: 0, duration: 0.8, ease: "expo.out" }, 3.75);
+    tl.to("#ec-tel", { rotationY: 16, rotationX: 6, duration: 2.4, ease: "power1.inOut" }, 4.55);
+    tl.fromTo("#ec-profil", { scale: 1 }, { scale: 1.12, transformOrigin: "50% 30%", duration: 2.2, ease: "power2.inOut" }, 4.7);
+    tl.fromTo("#ec-t2", { rotationX: -90, transformPerspective: 800, opacity: 0 }, { rotationX: 0, opacity: 1, duration: 0.45, ease: "back.out(1.4)" }, 3.95);
+    tl.fromTo("#ec-u2", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.7)" }, 4.9);
+    // Sortie : le téléphone plonge vers la caméra.
+    tl.to("#ec-tel", { z: 900, opacity: 0, duration: 0.4, ease: "power3.in" }, 6.6);
+    tl.to("#ec-t2, #ec-u2", { opacity: 0, duration: 0.25 }, 6.6);
+    window.__timelines["ecrans"] = tl;
+  </script>
+</template>

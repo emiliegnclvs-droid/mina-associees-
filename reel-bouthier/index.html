@@ -4,8 +4,7 @@
   data-composition-variables='[
     {"id":"telephone","type":"string","label":"Téléphone","default":"05 53 04 98 08"},
     {"id":"email","type":"string","label":"E-mail","default":"contact@bouthiersarl.fr"},
-    {"id":"site","type":"string","label":"Site web","default":"bouthier-sols.fr"},
-    {"id":"violet","type":"color","label":"Violet de la marque","default":"#432A63"}
+    {"id":"site","type":"string","label":"Site web","default":"bouthier-sols.fr"}
   ]'
 >
   <head>
@@ -32,32 +31,46 @@
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-duration="25.4" data-width="1080" data-height="1920">
+    <div id="root" data-composition-id="main" data-start="0" data-duration="35" data-width="1080" data-height="1920">
       <div id="fond"></div>
 
-      <div id="accroche" data-composition-id="accroche" data-composition-src="compositions/accroche.html"
-        data-start="0" data-duration="3.6" data-track-index="1" data-track-kind="graphics"
+      <div id="intro" data-composition-id="intro" data-composition-src="compositions/intro.html"
+        data-start="0" data-duration="4.2" data-track-index="1" data-track-kind="graphics"
         data-width="1080" data-height="1920" style="z-index:2"></div>
-
-      <div id="duo" data-composition-id="duo" data-composition-src="compositions/duo.html"
-        data-start="3.6" data-duration="3.8" data-track-index="1" data-track-kind="graphics"
+      <div id="equipe" data-composition-id="equipe" data-composition-src="compositions/equipe.html"
+        data-start="4.2" data-duration="4.6" data-track-index="1" data-track-kind="graphics"
         data-width="1080" data-height="1920" style="z-index:2"></div>
-
-      <div id="services" data-composition-id="services" data-composition-src="compositions/services.html"
-        data-start="7.4" data-duration="10" data-track-index="1" data-track-kind="graphics"
+      <div id="metiers" data-composition-id="metiers" data-composition-src="compositions/metiers.html"
+        data-start="8.8" data-duration="7.2" data-track-index="1" data-track-kind="graphics"
         data-width="1080" data-height="1920" style="z-index:2"></div>
-
-      <div id="zone" data-composition-id="zone" data-composition-src="compositions/zone.html"
-        data-start="17.4" data-duration="3.6" data-track-index="1" data-track-kind="graphics"
+      <div id="ecrans" data-composition-id="ecrans" data-composition-src="compositions/ecrans.html"
+        data-start="16" data-duration="7" data-track-index="1" data-track-kind="graphics"
         data-width="1080" data-height="1920" style="z-index:2"></div>
-
+      <div id="chantiers" data-composition-id="chantiers" data-composition-src="compositions/chantiers.html"
+        data-start="23" data-duration="3.4" data-track-index="1" data-track-kind="graphics"
+        data-width="1080" data-height="1920" style="z-index:2"></div>
       <div id="fin" data-composition-id="fin" data-composition-src="compositions/fin.html"
-        data-start="21" data-duration="4.4" data-track-index="1" data-track-kind="graphics"
+        data-start="26.4" data-duration="8.6" data-track-index="1" data-track-kind="graphics"
         data-width="1080" data-height="1920" style="z-index:2"></div>
 
       <div id="cadre" data-composition-id="cadre" data-composition-src="compositions/cadre.html" data-no-timeline
-        data-start="0" data-duration="25.4" data-track-index="2" data-track-kind="graphics"
+        data-start="0" data-duration="35" data-track-index="2" data-track-kind="graphics"
         data-width="1080" data-height="1920" style="z-index:5"></div>
+
+      <audio id="voix1" class="clip" src="assets/voice/v1.wav" data-duration="3.456" data-start="0.4" data-track-index="3" data-volume="1"></audio>
+      <audio id="voix2" class="clip" src="assets/voice/v2.wav" data-duration="4.224" data-start="4.3" data-track-index="3" data-volume="1"></audio>
+      <audio id="voix3" class="clip" src="assets/voice/v3.wav" data-duration="6.976" data-start="8.85" data-track-index="3" data-volume="1"></audio>
+      <audio id="voix4" class="clip" src="assets/voice/v4.wav" data-duration="3.264" data-start="16.2" data-track-index="3" data-volume="1"></audio>
+      <audio id="voix5" class="clip" src="assets/voice/v5.wav" data-duration="2.773" data-start="19.8" data-track-index="3" data-volume="1"></audio>
+      <audio id="voix6" class="clip" src="assets/voice/v6.wav" data-duration="2.923" data-start="23.15" data-track-index="3" data-volume="1"></audio>
+      <audio id="voix7" class="clip" src="assets/voice/v7.wav" data-duration="5.867" data-start="26.6" data-track-index="3" data-volume="1"></audio>
+
+      <audio id="sfx-w1" class="clip" src="assets/sfx/whoosh.mp3" data-duration="0.575" data-start="4.05" data-track-index="5" data-volume="0.5"></audio>
+      <audio id="sfx-w2" class="clip" src="assets/sfx/whoosh-short.mp3" data-duration="0.575" data-start="8.7" data-track-index="5" data-volume="0.5"></audio>
+      <audio id="sfx-w3" class="clip" src="assets/sfx/whoosh-cinematic.mp3" data-duration="5.544" data-start="15.85" data-track-index="6" data-volume="0.45"></audio>
+      <audio id="sfx-w4" class="clip" src="assets/sfx/whoosh.mp3" data-duration="0.575" data-start="19.55" data-track-index="5" data-volume="0.5"></audio>
+      <audio id="sfx-w5" class="clip" src="assets/sfx/whoosh-short.mp3" data-duration="0.575" data-start="22.9" data-track-index="5" data-volume="0.5"></audio>
+      <audio id="sfx-impact" class="clip" src="assets/sfx/impact-bass-1.mp3" data-duration="2.116" data-start="26.45" data-track-index="5" data-volume="0.6"></audio>
     </div>
     <script>
       const tl = gsap.timeline({ paused: true });

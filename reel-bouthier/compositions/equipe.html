@@ -1,0 +1,62 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #000; }
+    #eq-scene { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #eq-photo-w { position: absolute; left: 0; top: 158px; width: 1080px; height: 1543px; overflow: hidden; }
+    #eq-photo { position: absolute; left: 0; top: 0; width: 1080px; height: 1543px; object-fit: cover; object-position: 50% 70%; }
+    #eq-voile { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(42,28,63,0.75) 0%, rgba(42,28,63,0.35) 45%, rgba(42,28,63,0.1) 70%); }
+    #eq-scene3d { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; perspective: 1300px; perspective-origin: 50% 30%; }
+    #eq-prisme { position: absolute; left: 90px; top: 430px; width: 900px; height: 210px; transform-style: preserve-3d; }
+    .eq-face { position: absolute; left: 0; top: 0; width: 900px; height: 210px; display: flex; align-items: center; justify-content: center;
+      color: #fff; font-family: "Montserrat", sans-serif; font-weight: 700; letter-spacing: 4px; backface-visibility: hidden;
+      background: var(--violet); box-shadow: inset 0 0 0 6px rgba(255,255,255,0.12); }
+    .eq-face.clair { background: #fff; color: var(--violet); }
+    .eq-face.italique { font-family: "Playfair Display", serif; font-style: italic; letter-spacing: 0; text-transform: none; }
+    #eq-f0 { font-size: 112px; transform: translateZ(105px); }
+    #eq-f1 { font-size: 92px; transform: rotateX(-90deg) translateZ(105px); }
+    #eq-f2 { font-size: 72px; transform: rotateX(-180deg) translateZ(105px); }
+    #eq-f3 { font-size: 92px; transform: rotateX(-270deg) translateZ(105px); }
+    #eq-lieu { position: absolute; left: 0; top: 700px; width: 1080px; display: flex; flex-direction: column; align-items: center; }
+    #eq-pin { width: 150px; height: 200px; }
+    #eq-base { margin-top: 10px; background: #fff; color: var(--violet); font-family: "Playfair Display", serif; font-style: italic;
+      font-size: 56px; padding: 6px 34px 14px; box-shadow: 0 12px 30px rgba(0,0,0,0.35); }
+    #eq-agonac { margin-top: 6px; color: #fff; font-family: "Montserrat", sans-serif; font-weight: 700; font-size: 120px; letter-spacing: 12px;
+      text-shadow: 0 3px 0 #5e3f8e, 0 6px 0 #432a63, 0 9px 0 #2a1c3f, 0 20px 30px rgba(0,0,0,0.5); }
+  </style>
+  <div id="root" data-composition-id="equipe" data-width="1080" data-height="1920">
+    <div id="eq-scene">
+      <div id="eq-photo-w"><img id="eq-photo" src="assets/insta/grange-dallage.jpg" alt="Dallage en pierre" /><div id="eq-voile"></div></div>
+      <div id="eq-scene3d">
+        <div id="eq-prisme" data-layout-allow-overlap data-layout-ignore>
+          <div id="eq-f0" class="eq-face">NEUF</div>
+          <div id="eq-f1" class="eq-face clair">RÉNOVATION</div>
+          <div id="eq-f2" class="eq-face italique">une équipe qualifiée</div>
+          <div id="eq-f3" class="eq-face clair italique">&amp; passionnée</div>
+        </div>
+      </div>
+      <div id="eq-lieu">
+        <svg id="eq-pin" viewBox="0 0 100 135" aria-label="Agonac"><path d="M50 2C23.5 2 2 23.2 2 49.4 2 84 50 133 50 133S98 84 98 49.4C98 23.2 76.5 2 50 2Z" fill="#fff"/><circle cx="50" cy="48" r="19" fill="#432A63"/></svg>
+        <div id="eq-base">basée à</div>
+        <div id="eq-agonac">AGONAC</div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Entrée : on sort de la plongée de l'intro, la photo se pose.
+    tl.fromTo("#eq-scene", { scale: 0.7, opacity: 0, filter: "blur(16px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.4, ease: "expo.out" }, 0);
+    tl.fromTo("#eq-photo", { scale: 1.25, x: -40 }, { scale: 1.05, x: 20, duration: 4.6, ease: "none" }, 0);
+    // Le prisme arrive de profondeur puis tourne sur chaque mot de la voix.
+    tl.fromTo("#eq-prisme", { z: -900, rotationX: 0, rotationY: -40, opacity: 0 }, { z: 0, rotationY: 0, opacity: 1, duration: 0.6, ease: "expo.out" }, 0.1);
+    tl.to("#eq-prisme", { rotationX: 90, duration: 0.5, ease: "back.out(1.3)" }, 0.95);
+    tl.to("#eq-prisme", { rotationX: 180, duration: 0.5, ease: "back.out(1.3)" }, 1.75);
+    tl.to("#eq-prisme", { rotationX: 270, duration: 0.5, ease: "back.out(1.3)" }, 2.6);
+    // L'épingle tombe sur Agonac.
+    tl.fromTo("#eq-pin", { y: -500, rotationY: 0, opacity: 0 }, { y: 0, rotationY: 360, opacity: 1, duration: 0.7, ease: "back.out(1.4)" }, 3.05);
+    tl.fromTo("#eq-base", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(1.6)" }, 3.3);
+    tl.fromTo("#eq-agonac", { opacity: 0, rotationX: -90, transformPerspective: 800 }, { opacity: 1, rotationX: 0, duration: 0.5, ease: "expo.out" }, 3.45);
+    // Sortie : tout bascule en arrière, vers le carrousel des métiers.
+    tl.to("#eq-scene", { rotationX: 25, z: -400, transformPerspective: 1200, opacity: 0, filter: "blur(12px)", duration: 0.35, ease: "power3.in" }, 4.25);
+    window.__timelines["equipe"] = tl;
+  </script>
+</template>

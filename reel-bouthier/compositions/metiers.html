@@ -1,0 +1,61 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: #e8e3ef; }
+    #mt-scene { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; }
+    #mt-fond { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 45%, #ffffff 0%, #e8e3ef 55%, #beb7df 100%); }
+    #mt-3d { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; perspective: 1700px; perspective-origin: 50% 45%; }
+    #mt-anneau { position: absolute; left: 240px; top: 420px; width: 600px; height: 800px; transform-style: preserve-3d; }
+    .mt-carte { position: absolute; left: 0; top: 0; width: 600px; height: 800px; backface-visibility: hidden; background: #fff;
+      border: 10px solid #fff; box-shadow: 0 30px 60px rgba(42,28,63,0.35); overflow: hidden; }
+    .mt-photo { position: absolute; left: 0; top: 0; width: 580px; height: 620px; object-fit: cover; }
+    .mt-num { position: absolute; left: 0; top: 0; width: 100px; height: 100px; background: var(--violet); color: #fff;
+      font-family: "Montserrat", sans-serif; font-weight: 700; font-size: 42px; display: flex; align-items: center; justify-content: center; }
+    .mt-label { position: absolute; left: 0; top: 620px; width: 580px; height: 160px; background: var(--violet); color: #fff;
+      font-family: "Montserrat", sans-serif; font-weight: 700; font-size: 44px; line-height: 1.15; display: flex; align-items: center; justify-content: center; text-align: center; }
+    #mt-sol { position: absolute; left: -500px; top: 1230px; width: 2080px; height: 900px;
+      background: repeating-conic-gradient(#432a63 0 25%, #5e3f8e 0 50%) 0 0 / 180px 180px; opacity: 0.9; }
+    #mt-tete-w { position: absolute; left: 0; top: 250px; width: 1080px; display: flex; justify-content: center; }
+    #mt-tete { background: var(--violet); color: #fff; font-family: "Playfair Display", serif; font-style: italic;
+      font-size: 70px; padding: 10px 48px 20px; box-shadow: 0 12px 30px rgba(42,28,63,0.3); }
+  </style>
+  <div id="root" data-composition-id="metiers" data-width="1080" data-height="1920">
+    <div id="mt-scene">
+      <div id="mt-fond"></div>
+      <div id="mt-3d" data-layout-allow-overflow data-layout-allow-overlap>
+        <div id="mt-sol" data-layout-ignore></div>
+        <div id="mt-anneau" data-layout-ignore>
+          <div id="mt-c0" class="mt-carte" style="transform: rotateY(0deg) translateZ(820px)"><img class="mt-photo" src="assets/site/chantier-720.jpg" style="object-position:50% 60%" alt="" /><div class="mt-num">01</div><div class="mt-label">Carrelage</div></div>
+          <div id="mt-c1" class="mt-carte" style="transform: rotateY(45deg) translateZ(820px)"><img class="mt-photo" src="assets/site/Bouthier-sols-960x720.jpg" style="object-position:50% 40%" alt="" /><div class="mt-num">02</div><div class="mt-label">Faïence</div></div>
+          <div id="mt-c2" class="mt-carte" style="transform: rotateY(90deg) translateZ(820px)"><img class="mt-photo" src="assets/insta/escalier-travertin.jpg" style="object-position:50% 60%" alt="" /><div class="mt-num">03</div><div class="mt-label">Terrasses &amp; extérieur</div></div>
+          <div id="mt-c3" class="mt-carte" style="transform: rotateY(135deg) translateZ(820px)"><img class="mt-photo" src="assets/insta/grange-dallage.jpg" style="object-position:50% 85%" alt="" /><div class="mt-num">04</div><div class="mt-label">Pierres naturelles</div></div>
+          <div id="mt-c4" class="mt-carte" style="transform: rotateY(180deg) translateZ(820px)"><img class="mt-photo" src="assets/site/bouthier-1920x1000_3.jpg" style="object-position:50% 70%" alt="" /><div class="mt-num">05</div><div class="mt-label">Parquet</div></div>
+          <div id="mt-c5" class="mt-carte" style="transform: rotateY(225deg) translateZ(820px)"><img class="mt-photo" src="assets/site/Pose-PVC.jpg" style="object-position:50% 70%" alt="" /><div class="mt-num">06</div><div class="mt-label">Sols PVC &amp; vinyle</div></div>
+          <div id="mt-c6" class="mt-carte" style="transform: rotateY(270deg) translateZ(820px)"><img class="mt-photo" src="assets/insta/sdb.jpg" style="object-position:30% 50%" alt="" /><div class="mt-num">07</div><div class="mt-label">Salle de bain</div></div>
+          <div id="mt-c7" class="mt-carte" style="transform: rotateY(315deg) translateZ(820px)"><img class="mt-photo" src="assets/site/bouthier-1920x1000_2.jpg" style="object-position:50% 60%" alt="" /><div class="mt-num">08</div><div class="mt-label">Chape &amp; préparation<br/>des supports</div></div>
+        </div>
+      </div>
+      <div id="mt-tete-w"><div id="mt-tete">Nos savoir-faire</div></div>
+    </div>
+  </div>
+  <script>
+    const N = 8, R = 820, PAS = 360 / N;
+    gsap.set("#mt-anneau", { z: -R });
+    gsap.set("#mt-sol", { rotationX: 78, transformOrigin: "50% 0%" });
+    const tl = gsap.timeline({ paused: true });
+    // Entrée : le carrousel descend du ciel en tournant, la caméra se pose.
+    tl.fromTo("#mt-scene", { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "power1.out" }, 0);
+    tl.fromTo("#mt-anneau", { rotationY: 120, rotationX: -25, y: -500 }, { rotationY: 0, rotationX: 0, y: 0, duration: 0.7, ease: "expo.out" }, 0);
+    tl.fromTo("#mt-sol", { backgroundPosition: "0px 0px" }, { backgroundPosition: "0px 720px", duration: 7.2, ease: "none" }, 0);
+    tl.fromTo("#mt-tete", { rotationX: -90, transformPerspective: 800, opacity: 0 }, { rotationX: 0, opacity: 1, duration: 0.5, ease: "back.out(1.4)" }, 0.25);
+    // Chaque métier tourne face caméra au moment où la voix le nomme.
+    const T = [0.05, 1.3, 1.8, 2.75, 3.75, 4.45, 5.25, 5.75];
+    for (let i = 1; i < N; i++) {
+      tl.to("#mt-anneau", { rotationY: -i * PAS, duration: 0.45, ease: "power3.inOut" }, T[i] - 0.2);
+      tl.fromTo("#mt-c" + i + " .mt-photo", { scale: 1.25 }, { scale: 1, duration: 0.9, ease: "power2.out" }, T[i] - 0.2);
+    }
+    // Sortie : l'anneau s'envole, l'ordinateur arrive.
+    tl.to("#mt-anneau", { rotationY: "-=180", y: -1400, duration: 0.45, ease: "power3.in" }, 6.75);
+    tl.to("#mt-tete", { opacity: 0, y: -200, duration: 0.3, ease: "power3.in" }, 6.75);
+    window.__timelines["metiers"] = tl;
+  </script>
+</template>

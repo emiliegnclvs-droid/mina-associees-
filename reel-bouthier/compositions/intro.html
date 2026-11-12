@@ -1,0 +1,55 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; background: var(--violet-deep); }
+    #in-scene { position: absolute; left: 0; top: 0; width: 1080px; height: 1920px; perspective: 1500px; perspective-origin: 50% 40%; }
+    #in-sol { position: absolute; left: 0; top: 158px; width: 1080px; height: 1543px; transform-style: preserve-3d; }
+    .in-tuile { position: absolute; width: 180px; height: 171.5px; transform-style: preserve-3d; }
+    .in-face { position: absolute; inset: 2px; backface-visibility: hidden; }
+    .in-avant { background: var(--violet); box-shadow: inset 0 0 0 3px rgba(255,255,255,0.08); }
+    .in-avant.clair { background: #e8e3ef; }
+    .in-arriere { transform: rotateY(180deg); background-image: url(assets/insta/entree-travertin.jpg); background-size: 1160px 1543px; }
+    #in-titre { position: absolute; left: 0; top: 330px; width: 1080px; text-align: center; color: #fff;
+      font-family: "Playfair Display", serif; font-weight: 900; line-height: 0.95;
+      text-shadow: 0 2px 0 #5e3f8e, 0 4px 0 #4f3478, 0 6px 0 #432a63, 0 8px 0 #3a2457, 0 10px 0 #2a1c3f, 0 22px 30px rgba(0,0,0,0.45); }
+    #in-30 { font-size: 330px; }
+    #in-ans { font-size: 150px; font-style: italic; font-weight: 700; }
+    .bande-wrap { position: absolute; left: 0; width: 1080px; display: flex; justify-content: center; }
+    #in-b1w { top: 860px; transform: rotate(-2deg); }
+    #in-b1 { background: #fff; color: var(--violet); font-family: "Playfair Display", serif; font-style: italic;
+      font-size: 60px; padding: 12px 40px 20px; box-shadow: 0 12px 30px rgba(0,0,0,0.35); }
+  </style>
+  <div id="root" data-composition-id="intro" data-width="1080" data-height="1920">
+    <div id="in-scene">
+      <div id="in-sol" data-layout-allow-overflow data-layout-ignore></div>
+      <div id="in-titre"><div id="in-30">30</div><div id="in-ans">ans</div></div>
+      <div id="in-b1w" class="bande-wrap"><div id="in-b1">de savoir-faire à vos pieds</div></div>
+    </div>
+  </div>
+  <script>
+    // Le sol : 6 x 9 carreaux. Chaque carreau porte au dos une part de la photo du chantier.
+    const sol = document.getElementById("in-sol");
+    const COLS = 6, ROWS = 9, W = 180, H = 1543 / 9;
+    for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+      const t = document.createElement("div");
+      t.className = "in-tuile"; t.id = "in-t" + r + "-" + c;
+      t.style.left = c * W + "px"; t.style.top = r * H + "px";
+      t.innerHTML = '<div class="in-face in-avant' + ((r + c) % 2 ? " clair" : "") + '"></div>' +
+        '<div class="in-face in-arriere" style="background-position:' + (-40 - c * W - 2) + "px " + (-r * H - 2) + 'px"></div>';
+      sol.appendChild(t);
+    }
+    const tl = gsap.timeline({ paused: true });
+    // Caméra : on survole le sol incliné, puis on se redresse face à lui.
+    tl.fromTo("#in-sol", { rotationX: 52, scale: 1.35, y: 160 }, { rotationX: 0, scale: 1, y: 0, duration: 2.8, ease: "power2.inOut" }, 0);
+    // Les carreaux se retournent en vague diagonale et posent la photo.
+    for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+      tl.fromTo("#in-t" + r + "-" + c, { rotationY: 0, z: 0 }, { rotationY: 180, duration: 0.55, ease: "power3.inOut" }, 0.35 + (r + c) * 0.07);
+      tl.fromTo("#in-t" + r + "-" + c, { z: 0 }, { z: 60, duration: 0.27, ease: "power2.out", yoyo: true, repeat: 1 }, 0.35 + (r + c) * 0.07);
+    }
+    // Frame 0 : "30 ans" déjà là. Le chiffre arrive en profondeur.
+    tl.fromTo("#in-30", { scale: 1.12, rotationX: -25, transformPerspective: 900 }, { scale: 1, rotationX: 0, duration: 0.8, ease: "expo.out" }, 0);
+    tl.fromTo("#in-b1", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.4, ease: "power3.out" }, 0.9);
+    // Sortie : plongée dans le sol.
+    tl.to("#in-scene", { scale: 1.8, opacity: 0, filter: "blur(16px)", duration: 0.35, ease: "power3.in" }, 3.85);
+    window.__timelines["intro"] = tl;
+  </script>
+</template>
