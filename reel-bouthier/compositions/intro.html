@@ -37,7 +37,7 @@
         '<div class="in-face in-arriere" style="background-position:' + (-40 - c * W - 2) + "px " + (-r * H - 2) + 'px"></div>';
       sol.appendChild(t);
     }
-    const K = /*K*/{"D": 4.92}/*K*/;
+    const K = /*K*/{"D": 4.32}/*K*/;
     const tl = gsap.timeline({ paused: true });
     // Caméra : on survole le sol incliné, puis on se redresse face à lui.
     tl.fromTo("#in-sol", { rotationX: 52, scale: 1.35, y: 160 }, { rotationX: 0, scale: 1, y: 0, duration: 3.2, ease: "power2.inOut" }, 0);

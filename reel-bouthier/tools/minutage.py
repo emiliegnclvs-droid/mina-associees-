@@ -13,29 +13,29 @@ K = {}
 r = lambda x: round(x, 2)
 
 # 1. Intro
-t0 = 0; voix.append(("a1", 0.5))
-D = max(4.4, 0.5 + V["a1"] + 0.6); scenes.append(("intro", t0, D)); K["intro"] = {"D": r(D)}
+t0 = 0; voix.append(("a1", 0.4))
+D = max(3.8, 0.4 + V["a1"] + 0.4); scenes.append(("intro", t0, D)); K["intro"] = {"D": r(D)}
 # 2. Équipe (prisme)
-t0 += D; t = 0.55; loc = {}
-for i, gap in [("b1", 0.1), ("b2", 0.25), ("b3", 0.1), ("b4", 0.3), ("b5", 0)]:
+t0 += D; t = 0.45; loc = {}
+for i, gap in [("b1", 0.05), ("b2", 0.15), ("b3", 0.05), ("b4", 0.2), ("b5", 0)]:
     loc[i] = t; voix.append((i, t0 + t)); t += V[i] + gap
-D = t + 0.9; scenes.append(("equipe", t0, D))
+D = t + 0.7; scenes.append(("equipe", t0, D))
 K["equipe"] = {"D": r(D), "r1": r(loc["b2"] - 0.2), "r2": r(loc["b3"] - 0.2), "r3": r(loc["b4"] - 0.2), "pin": r(loc["b5"] - 0.15)}
 # 3. Métiers (carrousel)
-t0 += D; t = 0.7; T = []
+t0 += D; t = 0.55; T = []
 for k in range(1, 9):
-    i = f"c{k}"; T.append(r(t)); voix.append((i, t0 + t + 0.05)); t += max(1.35, V[i] + 0.45)
-D = t + 0.5; scenes.append(("metiers", t0, D)); K["metiers"] = {"D": r(D), "T": T}
+    i = f"c{k}"; T.append(r(t)); voix.append((i, t0 + t + 0.05)); t += max(1.15, V[i] + 0.3)
+D = t + 0.35; scenes.append(("metiers", t0, D)); K["metiers"] = {"D": r(D), "T": T}
 # 4. Écrans (ordinateur puis téléphone)
-t0 += D; voix.append(("d1", t0 + 0.5)); L = 0.5 + V["d1"] + 0.6
-voix.append(("d2", t0 + L + 0.35)); D = L + 0.35 + V["d2"] + 1.1
+t0 += D; voix.append(("d1", t0 + 0.4)); L = 0.4 + V["d1"] + 0.4
+voix.append(("d2", t0 + L + 0.3)); D = L + 0.3 + V["d2"] + 0.8
 scenes.append(("ecrans", t0, D)); K["ecrans"] = {"D": r(D), "L": r(L), "url": 1.5, "ig": r(L + 0.35 + V["d2"] * 0.75)}
 # 5. Chantiers
-t0 += D; voix.append(("e1", t0 + 0.35)); D = max(4.0, 0.35 + V["e1"] + 1.0)
+t0 += D; voix.append(("e1", t0 + 0.35)); D = max(3.4, 0.35 + V["e1"] + 0.6)
 scenes.append(("chantiers", t0, D)); K["chantiers"] = {"D": r(D), "b1": 0.3, "b2": r(0.35 + V["e1"] * 0.45)}
 # 6. Fin
-t0 += D; voix.append(("f1", t0 + 0.4)); f2 = 0.4 + V["f1"] + 0.3; voix.append(("f2", t0 + f2))
-D = f2 + V["f2"] + 2.3; scenes.append(("fin", t0, D)); K["fin"] = {"D": r(D), "devis": r(0.4 + V["f1"] * 0.3), "tel": r(f2 + 0.3)}
+t0 += D; voix.append(("f1", t0 + 0.3)); f2 = 0.3 + V["f1"] + 0.05; voix.append(("f2", t0 + f2))
+D = f2 + V["f2"] + 1.8; scenes.append(("fin", t0, D)); K["fin"] = {"D": r(D), "devis": r(0.4 + V["f1"] * 0.3), "tel": r(f2 + 0.3)}
 TOTAL = r(t0 + D)
 
 for sid, k in K.items():
