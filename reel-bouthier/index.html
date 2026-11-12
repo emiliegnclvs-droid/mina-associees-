@@ -1,0 +1,67 @@
+<!doctype html>
+<html
+  lang="fr"
+  data-composition-variables='[
+    {"id":"telephone","type":"string","label":"Téléphone","default":"05 53 04 98 08"},
+    {"id":"email","type":"string","label":"E-mail","default":"contact@bouthiersarl.fr"},
+    {"id":"site","type":"string","label":"Site web","default":"bouthier-sols.fr"},
+    {"id":"violet","type":"color","label":"Violet de la marque","default":"#432A63"}
+  ]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1080, height=1920" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+      :root {
+        --violet: #432a63;
+        --violet-deep: #2a1c3f;
+        --lavande: #f3f0f7;
+        --lilas: #beb7df;
+      }
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        margin: 0;
+        width: 1080px;
+        height: 1920px;
+        overflow: hidden;
+        background: var(--violet);
+      }
+      #root { width: 100%; height: 100%; position: relative; }
+      #fond { position: absolute; inset: 0; background: var(--lavande); }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="25.4" data-width="1080" data-height="1920">
+      <div id="fond"></div>
+
+      <div id="accroche" data-composition-id="accroche" data-composition-src="compositions/accroche.html"
+        data-start="0" data-duration="3.6" data-track-index="1" data-track-kind="graphics"
+        data-width="1080" data-height="1920" style="z-index:2"></div>
+
+      <div id="duo" data-composition-id="duo" data-composition-src="compositions/duo.html"
+        data-start="3.6" data-duration="3.8" data-track-index="1" data-track-kind="graphics"
+        data-width="1080" data-height="1920" style="z-index:2"></div>
+
+      <div id="services" data-composition-id="services" data-composition-src="compositions/services.html"
+        data-start="7.4" data-duration="10" data-track-index="1" data-track-kind="graphics"
+        data-width="1080" data-height="1920" style="z-index:2"></div>
+
+      <div id="zone" data-composition-id="zone" data-composition-src="compositions/zone.html"
+        data-start="17.4" data-duration="3.6" data-track-index="1" data-track-kind="graphics"
+        data-width="1080" data-height="1920" style="z-index:2"></div>
+
+      <div id="fin" data-composition-id="fin" data-composition-src="compositions/fin.html"
+        data-start="21" data-duration="4.4" data-track-index="1" data-track-kind="graphics"
+        data-width="1080" data-height="1920" style="z-index:2"></div>
+
+      <div id="cadre" data-composition-id="cadre" data-composition-src="compositions/cadre.html"
+        data-start="0" data-duration="21" data-track-index="2" data-track-kind="graphics"
+        data-width="1080" data-height="1920" style="z-index:5"></div>
+    </div>
+    <script>
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; pointer-events: none; }
+    #cadre-haut {
+      position: absolute; left: 0; top: 0; width: 1080px; height: 340px;
+      background: var(--violet); box-shadow: 0 10px 30px rgba(42, 28, 63, 0.35);
+    }
+    #cadre-logo { position: absolute; left: 160px; top: 186px; width: 760px; }
+    #cadre-bas {
+      position: absolute; left: 0; top: 1580px; width: 1080px; height: 340px;
+      background: var(--violet); box-shadow: 0 -10px 30px rgba(42, 28, 63, 0.35);
+    }
+    .cadre-icone {
+      position: absolute; top: 1640px; width: 150px; height: 150px; border-radius: 50%;
+      background: #fff; display: flex; align-items: center; justify-content: center;
+    }
+    .cadre-icone img { width: 104px; height: 104px; }
+  </style>
+  <div id="root" data-composition-id="cadre" data-width="1080" data-height="1920">
+    <div id="cadre-haut"></div>
+    <img id="cadre-logo" src="assets/brand/wordmark-white.png" alt="Bouthier Pascal" />
+    <div id="cadre-bas" data-layout-ignore></div>
+    <div id="ic1" class="cadre-icone" style="left:105px" data-layout-ignore><img src="assets/brand/carrelage.svg" alt="" /></div>
+    <div id="ic2" class="cadre-icone" style="left:345px" data-layout-ignore><img src="assets/brand/dallage.svg" alt="" /></div>
+    <div id="ic3" class="cadre-icone" style="left:585px" data-layout-ignore><img src="assets/brand/autres-sols.svg" alt="" /></div>
+    <div id="ic4" class="cadre-icone" style="left:825px" data-layout-ignore><img src="assets/brand/salle-de-bain.svg" alt="" /></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    // Fin du cadre : les deux bandeaux s'ouvrent vers l'extérieur pendant que la scène de fin inonde de violet.
+    tl.to("#cadre-haut, #cadre-logo", { y: -360, duration: 0.45, ease: "power3.in" }, 20.5);
+    tl.to("#cadre-bas, .cadre-icone", { y: 360, duration: 0.45, ease: "power3.in" }, 20.5);
+    window.__timelines["cadre"] = tl;
+  </script>
+</template>
