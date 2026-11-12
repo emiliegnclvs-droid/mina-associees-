@@ -1,48 +1,52 @@
 <template>
   <style>
-    #root { position: absolute; inset: 0; overflow: hidden; background: var(--violet); }
-    #fn-fond { position: absolute; inset: 0; background: var(--violet); }
-    .fn-ic { position: absolute; top: 1160px; width: 130px; height: 130px; border-radius: 50%; background: #fff; display: flex; align-items: center; justify-content: center; }
-    .fn-ic img { width: 90px; height: 90px; }
-    #fn-logo { position: absolute; left: 80px; top: 400px; width: 920px; }
+    #root { position: absolute; inset: 0; overflow: hidden; background: #fff; }
+    #fn-fond { position: absolute; inset: 0; background: #fff; }
+    #fn-logo { position: absolute; left: 310px; top: 210px; width: 460px; }
     .bande-wrap { position: absolute; left: 0; width: 1080px; display: flex; justify-content: center; }
-    #fn-devis-w { top: 680px; transform: rotate(-2deg); }
-    #fn-devis { background: #fff; color: var(--violet); font-family: "Playfair Display", serif; font-style: italic; font-weight: 700;
-      font-size: 68px; padding: 8px 48px 18px; }
+    #fn-devis-w { top: 900px; transform: rotate(-2deg); }
+    #fn-devis { background: var(--violet); color: #fff; font-family: "Playfair Display", serif; font-style: italic; font-weight: 700;
+      font-size: 68px; padding: 8px 48px 18px; box-shadow: 0 8px 24px rgba(42,28,63,0.3); }
     .fn-ligne { position: absolute; left: 0; width: 1080px; display: flex; justify-content: center; align-items: center; gap: 22px;
-      color: #fff; font-family: "Montserrat", sans-serif; font-weight: 700; }
+      color: var(--violet); font-family: "Montserrat", sans-serif; font-weight: 700; }
     .fn-ligne svg { flex: none; }
-    #fn-tel { top: 830px; font-size: 76px; letter-spacing: 2px; }
-    #fn-mail { top: 950px; font-size: 44px; }
-    #fn-site { top: 1030px; font-size: 44px; color: var(--lilas); }
+    #fn-tel { top: 1050px; font-size: 76px; letter-spacing: 2px; }
+    #fn-mail { top: 1165px; font-size: 44px; }
+    #fn-site { top: 1240px; font-size: 44px; color: #5e3f8e; }
+    #fn-bas { position: absolute; left: 0; top: 1420px; width: 1080px; height: 500px; background: var(--violet); }
+    .fn-ic { position: absolute; top: 1480px; width: 150px; height: 150px; border-radius: 50%; background: #fff;
+      display: flex; align-items: center; justify-content: center; }
+    .fn-ic img { width: 104px; height: 104px; }
   </style>
   <div id="root" data-composition-id="fin" data-width="1080" data-height="1920">
     <div id="fn-fond"></div>
-    <img id="fn-logo" src="assets/brand/wordmark-white.png" alt="Bouthier Pascal" />
+    <img id="fn-logo" src="assets/brand/logo-complet.png" alt="Bouthier Pascal SARL" />
     <div id="fn-devis-w" class="bande-wrap"><div id="fn-devis">Devis gratuit</div></div>
     <div id="fn-tel" class="fn-ligne">
-      <svg width="64" height="64" viewBox="0 0 24 24"><path fill="#fff" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
+      <svg width="64" height="64" viewBox="0 0 24 24"><path fill="#432A63" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1z"/></svg>
       <span id="fn-tel-txt" data-var-text="telephone">05 53 04 98 08</span>
     </div>
     <div id="fn-mail" class="fn-ligne">
-      <svg width="44" height="44" viewBox="0 0 24 24"><path fill="#fff" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg>
+      <svg width="44" height="44" viewBox="0 0 24 24"><path fill="#432A63" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5-8-5V6l8 5 8-5z"/></svg>
       <span id="fn-mail-txt" data-var-text="email">contact@bouthiersarl.fr</span>
     </div>
-    <div id="fn-i1" class="fn-ic" style="left:150px"><img src="assets/brand/carrelage.svg" alt="" /></div>
-    <div id="fn-i2" class="fn-ic" style="left:362px"><img src="assets/brand/dallage.svg" alt="" /></div>
-    <div id="fn-i3" class="fn-ic" style="left:588px"><img src="assets/brand/autres-sols.svg" alt="" /></div>
-    <div id="fn-i4" class="fn-ic" style="left:800px"><img src="assets/brand/salle-de-bain.svg" alt="" /></div>
     <div id="fn-site" class="fn-ligne"><span id="fn-site-txt" data-var-text="site">bouthier-sols.fr</span></div>
+    <div id="fn-bas" data-layout-ignore></div>
+    <div id="fn-i1" class="fn-ic" style="left:105px" data-layout-ignore><img src="assets/brand/carrelage.svg" alt="" /></div>
+    <div id="fn-i2" class="fn-ic" style="left:345px" data-layout-ignore><img src="assets/brand/dallage.svg" alt="" /></div>
+    <div id="fn-i3" class="fn-ic" style="left:585px" data-layout-ignore><img src="assets/brand/autres-sols.svg" alt="" /></div>
+    <div id="fn-i4" class="fn-ic" style="left:825px" data-layout-ignore><img src="assets/brand/salle-de-bain.svg" alt="" /></div>
   </div>
   <script>
     const tl = gsap.timeline({ paused: true });
-        // Le nom se trace de gauche à droite, comme la signature du bandeau.
-    tl.fromTo("#fn-logo", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.7, ease: "power2.inOut" }, 0.1);
-    tl.fromTo("#fn-devis", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.5)" }, 0.75);
-    tl.fromTo("#fn-tel", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 1.0);
-    tl.fromTo("#fn-mail", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 1.15);
-    tl.fromTo("#fn-site", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 1.3);
-    tl.fromTo(".fn-ic", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.6)", stagger: 0.07 }, 1.45);
+    // Le logo se dévoile de haut en bas : les trois carreaux, puis le nom.
+    tl.fromTo("#fn-logo", { clipPath: "inset(0 0 100% 0)", y: -24 }, { clipPath: "inset(0 0 0% 0)", y: 0, duration: 0.9, ease: "power2.inOut" }, 0.05);
+    tl.fromTo("#fn-bas", { y: 500 }, { y: 0, duration: 0.5, ease: "expo.out" }, 0.3);
+    tl.fromTo(".fn-ic", { scale: 0, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.6)", stagger: 0.07 }, 0.5);
+    tl.fromTo("#fn-devis", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.5)" }, 0.95);
+    tl.fromTo("#fn-tel", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 1.2);
+    tl.fromTo("#fn-mail", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 1.35);
+    tl.fromTo("#fn-site", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 1.5);
     window.__timelines["fin"] = tl;
   </script>
 </template>
