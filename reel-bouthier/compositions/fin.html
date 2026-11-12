@@ -29,15 +29,16 @@
     <div id="fn-site" class="fn-ligne"><span id="fn-site-txt" data-var-text="site">bouthier-sols.fr</span></div>
   </div>
   <script>
+    const K = /*K*/{"D": 9.25, "devis": 0.81, "tel": 2.37}/*K*/;
     const tl = gsap.timeline({ paused: true });
     // Le logo se dévoile de haut en bas : les trois carreaux, puis le nom.
     // Le logo arrive en 3D : il pivote face caméra en sortant de la profondeur.
     tl.fromTo("#fn-fond", { opacity: 0 }, { opacity: 1, duration: 0.15 }, 0);
     tl.fromTo("#fn-logo", { rotationY: -100, z: -900, transformPerspective: 1200, opacity: 0 }, { rotationY: 0, z: 0, opacity: 1, duration: 1.0, ease: "expo.out" }, 0.05);
-    tl.fromTo("#fn-devis", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.5)" }, 0.9);
-    tl.fromTo("#fn-tel", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 1.75);
-    tl.fromTo("#fn-mail", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 2.6);
-    tl.fromTo("#fn-site", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, 2.8);
+    tl.fromTo("#fn-devis", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.45, ease: "back.out(1.5)" }, K.devis);
+    tl.fromTo("#fn-tel", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, K.tel);
+    tl.fromTo("#fn-mail", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, K.tel + 1.2);
+    tl.fromTo("#fn-site", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power4.out" }, K.tel + 1.5);
     window.__timelines["fin"] = tl;
   </script>
 </template>

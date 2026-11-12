@@ -66,28 +66,29 @@
     gsap.set("#ec-base", { rotationX: 90, transformOrigin: "50% 0%" });
     gsap.set("#ec-ecran", { transformOrigin: "50% 100%" });
     gsap.set("#ec-tel-c1", { z: -8 }); gsap.set("#ec-tel-c2", { z: -16 }); gsap.set("#ec-tel-c3", { z: -24 });
+    const K = /*K*/{"D": 9.14, "L": 4.64, "url": 1.5, "ig": 7.28}/*K*/;
     const tl = gsap.timeline({ paused: true });
     tl.fromTo("#ec-fond", { opacity: 0 }, { opacity: 1, duration: 0.25 }, 0);
     // --- L'ordinateur arrive en tournant, s'ouvre, le site défile. ---
     tl.fromTo("#ec-pc", { y: 900, rotationX: 10, rotationY: -60, z: -600 }, { y: 0, rotationX: -8, rotationY: -22, z: 0, duration: 0.9, ease: "expo.out" }, 0);
     tl.fromTo("#ec-ecran", { rotationX: -88 }, { rotationX: 8, duration: 0.8, ease: "back.out(1.2)" }, 0.35);
-    tl.to("#ec-pc", { rotationY: 18, rotationX: -6, duration: 2.55, ease: "power1.inOut" }, 0.9);
-    tl.fromTo("#ec-site", { y: 0 }, { y: -1600, duration: 2.5, ease: "power2.inOut" }, 1.0);
+    tl.to("#ec-pc", { rotationY: 18, rotationX: -6, duration: K.L - 1.25, ease: "power1.inOut" }, 0.9);
+    tl.fromTo("#ec-site", { y: 0 }, { y: -1600, duration: K.L - 1.6, ease: "power2.inOut" }, 1.0);
     tl.fromTo("#ec-t1", { rotationX: -90, transformPerspective: 800, opacity: 0 }, { rotationX: 0, opacity: 1, duration: 0.45, ease: "back.out(1.4)" }, 0.3);
-    tl.fromTo("#ec-u1", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.7)" }, 1.4);
+    tl.fromTo("#ec-u1", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.7)" }, K.url);
     // Passage : l'ordinateur se referme et file à gauche, le téléphone arrive de droite.
-    tl.to("#ec-ecran", { rotationX: -60, duration: 0.35, ease: "power2.in" }, 3.45);
-    tl.to("#ec-pc", { x: -1500, rotationY: -70, duration: 0.45, ease: "power3.in" }, 3.5);
-    tl.to("#ec-t1, #ec-u1", { opacity: 0, x: -300, duration: 0.3, ease: "power3.in" }, 3.5);
+    tl.to("#ec-ecran", { rotationX: -60, duration: 0.35, ease: "power2.in" }, K.L - 0.35);
+    tl.to("#ec-pc", { x: -1500, rotationY: -70, duration: 0.45, ease: "power3.in" }, K.L - 0.3);
+    tl.to("#ec-t1, #ec-u1", { opacity: 0, x: -300, duration: 0.3, ease: "power3.in" }, K.L - 0.3);
     // --- Le téléphone pivote, le profil Instagram défile. ---
-    tl.fromTo("#ec-tel", { x: 1300, rotationY: 120, rotationZ: 12 }, { x: 0, rotationY: -18, rotationZ: 0, duration: 0.8, ease: "expo.out" }, 3.75);
-    tl.to("#ec-tel", { rotationY: 16, rotationX: 6, duration: 2.4, ease: "power1.inOut" }, 4.55);
-    tl.fromTo("#ec-profil", { scale: 1 }, { scale: 1.12, transformOrigin: "50% 30%", duration: 2.2, ease: "power2.inOut" }, 4.7);
-    tl.fromTo("#ec-t2", { rotationX: -90, transformPerspective: 800, opacity: 0 }, { rotationX: 0, opacity: 1, duration: 0.45, ease: "back.out(1.4)" }, 3.95);
-    tl.fromTo("#ec-u2", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.7)" }, 4.9);
+    tl.fromTo("#ec-tel", { x: 1300, rotationY: 120, rotationZ: 12 }, { x: 0, rotationY: -18, rotationZ: 0, duration: 0.8, ease: "expo.out" }, K.L - 0.05);
+    tl.to("#ec-tel", { rotationY: 16, rotationX: 6, duration: K.D - K.L - 1.25, ease: "power1.inOut" }, K.L + 0.75);
+    tl.fromTo("#ec-profil", { scale: 1 }, { scale: 1.12, transformOrigin: "50% 30%", duration: K.D - K.L - 1.5, ease: "power2.inOut" }, K.L + 0.9);
+    tl.fromTo("#ec-t2", { rotationX: -90, transformPerspective: 800, opacity: 0 }, { rotationX: 0, opacity: 1, duration: 0.45, ease: "back.out(1.4)" }, K.L + 0.15);
+    tl.fromTo("#ec-u2", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.7)" }, K.ig);
     // Sortie : le téléphone plonge vers la caméra.
-    tl.to("#ec-tel", { z: 900, opacity: 0, duration: 0.4, ease: "power3.in" }, 6.6);
-    tl.to("#ec-t2, #ec-u2", { opacity: 0, duration: 0.25 }, 6.6);
+    tl.to("#ec-tel", { z: 900, opacity: 0, duration: 0.4, ease: "power3.in" }, K.D - 0.4);
+    tl.to("#ec-t2, #ec-u2", { opacity: 0, duration: 0.25 }, K.D - 0.4);
     window.__timelines["ecrans"] = tl;
   </script>
 </template>

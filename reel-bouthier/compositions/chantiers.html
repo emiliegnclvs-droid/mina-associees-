@@ -37,14 +37,15 @@
     ];
     P.forEach(([s, x, y, z, ry]) => gsap.set(s, { x: x, y: y, z: z, rotationY: ry }));
     gsap.set("#ch-p1", { x: -760 }); gsap.set("#ch-p3", { x: 80 });
+    const K = /*K*/{"D": 4.55, "b1": 0.3, "b2": 1.79}/*K*/;
     const tl = gsap.timeline({ paused: true });
     tl.fromTo("#ch-fond", { opacity: 0 }, { opacity: 1, duration: 0.2 }, 0);
-    tl.fromTo("#ch-cam", { z: -600 }, { z: 4250, duration: 3.1, ease: "power2.inOut" }, 0);
-    tl.fromTo("#ch-cam", { rotationZ: -4 }, { rotationZ: 3, duration: 3.1, ease: "sine.inOut" }, 0);
-    tl.fromTo("#ch-b1", { opacity: 0, filter: "blur(8px)", scale: 1.3 }, { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.3, ease: "expo.out" }, 0.25);
-    tl.fromTo("#ch-b2", { opacity: 0, filter: "blur(8px)", scale: 1.3 }, { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.3, ease: "expo.out" }, 1.3);
+    tl.fromTo("#ch-cam", { z: -600 }, { z: 4250, duration: K.D - 0.3, ease: "power2.inOut" }, 0);
+    tl.fromTo("#ch-cam", { rotationZ: -4 }, { rotationZ: 3, duration: K.D - 0.3, ease: "sine.inOut" }, 0);
+    tl.fromTo("#ch-b1", { opacity: 0, filter: "blur(8px)", scale: 1.3 }, { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.3, ease: "expo.out" }, K.b1);
+    tl.fromTo("#ch-b2", { opacity: 0, filter: "blur(8px)", scale: 1.3 }, { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.3, ease: "expo.out" }, K.b2);
     // Sortie : flash blanc vers la carte finale.
-    tl.to("#ch-b1, #ch-b2", { opacity: 0, duration: 0.2 }, 3.15);
+    tl.to("#ch-b1, #ch-b2", { opacity: 0, duration: 0.2 }, K.D - 0.25);
     window.__timelines["chantiers"] = tl;
   </script>
 </template>
