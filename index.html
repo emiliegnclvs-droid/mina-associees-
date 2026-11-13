@@ -2,9 +2,9 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Mina Associées — Photographe & Community Manager en Dordogne</title>
-  <meta name="description" content="Mina Associées, photographe en Dordogne (Périgueux et alentours) : séances grossesse, naissance, famille, couple, mariage, sport. Community management et création de contenu.">
+  <meta name="description" content="Mina Associées, photographe en Dordogne (Périgueux, Coursac et alentours) : séances grossesse, naissance, famille, couple, mariage, sport. Community management et création de contenu.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Gilda+Display&family=Jost:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
@@ -13,16 +13,28 @@
 <body>
 
   <header class="nav">
-    <a href="#accueil" class="nav-logo"><img src="images/logo-mina.png" alt="Mina Associées"></a>
-    <button class="nav-toggle" aria-label="Ouvrir le menu" aria-expanded="false">☰</button>
-    <nav class="nav-links">
-      <a href="#studio">Studio</a>
-      <a href="#mariage">Mariage</a>
-      <a href="#sport">Sport</a>
-      <a href="#community">Community manager</a>
-      <a href="#contact" class="nav-cta">Réserver</a>
-    </nav>
+    <a href="#accueil" class="nav-logo"><img src="images/logo-mina.png" alt="Mina Associées — accueil"></a>
+    <button class="burger" id="menu-open" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span><span></span>
+    </button>
   </header>
+
+  <div class="menu-overlay" id="menu-overlay" hidden></div>
+  <nav class="menu" id="menu" aria-label="Menu principal" aria-hidden="true">
+    <button class="menu-close" id="menu-close" aria-label="Fermer le menu">×</button>
+    <img src="images/logo-mina.png" alt="" class="menu-logo">
+    <ul class="menu-links">
+      <li><a href="#photographie">Photographie</a></li>
+      <li><a href="#community">Community manager</a></li>
+      <li><a href="#tarifs">Tarifs</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="menu-foot">
+      <p>Périgueux, Coursac et alentours</p>
+      <p><a href="tel:+33624792646">06.24.79.26.46</a></p>
+      <p><a href="https://www.instagram.com/mina.associees/" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/share/1DspGLDDuV/" target="_blank" rel="noopener">Facebook</a></p>
+    </div>
+  </nav>
 
   <main>
     <section id="accueil" class="banner">
@@ -30,81 +42,86 @@
       <p class="banner-tagline">Photographe &amp; Community Manager</p>
     </section>
 
-    <section class="intro section">
+    <!-- PHOTOGRAPHIE -->
+    <section id="photographie" class="section photo">
+      <h2 class="center">Photographie</h2>
       <p class="intro-text">Photographe en Dordogne, Mina Associées réalise des séances photo grossesse, naissance, famille, couple, mariage et sport.</p>
-      <img src="images/moto-hero.jpg" alt="Pilote de moto dans un nuage de fumée turquoise" class="intro-img">
-    </section>
 
-    <section id="studio" class="section">
-      <h2 class="center">Séances en studio</h2>
-      <div class="grid-3">
-        <article class="item">
-          <img src="images/grossesse.jpg" alt="Séance photo grossesse en couple">
-          <div class="box">
-            <h3>Grossesse</h3>
-            <p>Un nouveau chapitre commence. Immortalisons ensemble cette parenthèse unique, entre douceur, émotions et impatience de se rencontrer.</p>
-          </div>
-        </article>
-        <article class="item">
-          <img src="images/naissance.jpg" alt="Main de nouveau-né tenant un bracelet de perles">
-          <div class="box">
-            <h3>Naissance</h3>
-            <p>Les premiers jours passent si vite. Gardez une trace de ces instants précieux, des petits détails et de toute la tendresse de vos premiers moments ensemble.</p>
-          </div>
-        </article>
-        <article class="item">
-          <img src="images/famille-couple.jpg" alt="Couple souriant en noir et blanc">
-          <div class="box">
-            <h3>Famille et couple</h3>
-            <p>Des rires, des regards complices, des gestes spontanés… Des photos simples et authentiques pour raconter ce qui vous unit.</p>
-          </div>
-        </article>
+      <div class="cats" role="tablist" aria-label="Catégories de photos">
+        <button class="cat" data-cat="Grossesse">Grossesse</button>
+        <button class="cat" data-cat="Naissance">Naissance</button>
+        <button class="cat" data-cat="Famille et couple">Famille &amp; couple</button>
+        <button class="cat" data-cat="Mariage">Mariage</button>
+        <button class="cat" data-cat="Sport">Sport</button>
       </div>
-    </section>
 
-    <section id="mariage" class="section split">
-      <h2 class="big-title">Mariage<br>&amp;<br>événements</h2>
-      <article class="item">
-        <img src="images/mariage.jpg" alt="Mariés riant ensemble devant une porte vitrée">
-        <div class="box">
-          <h3>Mariage</h3>
-          <p>Des préparatifs aux grands moments de partage, je capture les émotions et les petits instants que vous n'aurez pas envie d'oublier.</p>
-        </div>
-      </article>
-    </section>
-
-    <section id="sport" class="section sport">
-      <h2 class="big-title">Sport</h2>
-      <div class="sport-col">
-        <article class="item">
-          <img src="images/motocross.jpg" alt="Pilote de motocross en plein saut">
-          <div class="box">
-            <h3>Sport</h3>
-            <p>L'intensité d'une action, l'émotion d'une victoire, l'esprit d'équipe… Je photographie le sport au plus près de l'action, pour raconter chaque rencontre en images.</p>
-          </div>
-        </article>
-        <img src="images/foot-10.jpg" alt="Footballeur numéro 10 frappant le ballon">
+      <div class="carousel" aria-roledescription="carrousel" aria-label="Portfolio photo">
+        <button class="arrow prev" aria-label="Photo précédente">‹</button>
+        <div class="stage" id="stage"></div>
+        <button class="arrow next" aria-label="Photo suivante">›</button>
       </div>
-      <div class="sport-col sport-offset">
-        <img src="images/foot-duel.jpg" alt="Duel entre deux footballeurs">
-        <p class="box caption">Au cœur de l'action, au plus près de l'émotion.</p>
+
+      <div class="slide-info box" aria-live="polite">
+        <h3 id="slide-title"></h3>
+        <p id="slide-text"></p>
       </div>
+      <div class="dots" id="dots"></div>
     </section>
 
-    <section class="section duo">
-      <figure>
-        <img src="images/grossesse-fleurs.jpg" alt="Future maman souriante avec un bouquet de fleurs séchées">
-        <figcaption class="box caption">Des images qui racontent vos histoires.</figcaption>
-      </figure>
-      <figure>
-        <img src="images/foot-equipe.jpg" alt="Équipe de football en maillots roses célébrant">
-        <figcaption class="box caption">L'émotion au cœur du jeu.</figcaption>
-      </figure>
-    </section>
-
-    <section id="community" class="section">
+    <!-- COMMUNITY MANAGER -->
+    <section id="community" class="section community">
       <h2 class="center">Community manager</h2>
       <p class="cm-text">Donnez de la visibilité à votre activité&nbsp;!<br>Nous vous accompagnons dans la gestion de vos réseaux sociaux et la création de contenus pour valoriser votre savoir-faire, développer votre visibilité et attirer de nouveaux clients.</p>
+
+      <div class="scene" id="scene" role="img" aria-label="Un ordinateur affichant un planning de publications et un téléphone affichant un profil Instagram">
+        <div class="rig" id="rig">
+          <div class="laptop">
+            <div class="screen">
+              <div class="app">
+                <div class="app-bar"><i></i><i></i><i></i><span>Planning des réseaux · Mina Associées</span></div>
+                <div class="app-body">
+                  <div class="week">
+                    <div class="week-head">Cette semaine</div>
+                    <div class="day"><b>Lun</b><span class="chip c1">Story</span></div>
+                    <div class="day"><b>Mar</b><span class="chip c2">Post</span></div>
+                    <div class="day"><b>Mer</b></div>
+                    <div class="day"><b>Jeu</b><span class="chip c3">Reel</span></div>
+                    <div class="day"><b>Ven</b><span class="chip c2">Post</span></div>
+                    <div class="day"><b>Sam</b><span class="chip c1">Story</span></div>
+                    <div class="day"><b>Dim</b></div>
+                  </div>
+                  <div class="posts">
+                    <div class="post"><img src="images/mariage.jpg" alt=""><div><b>Mariage</b><span class="st ok">Publiée</span></div></div>
+                    <div class="post"><img src="images/foot-equipe.jpg" alt=""><div><b>Match du week-end</b><span class="st plan">Programmée · mar. 18h</span></div></div>
+                    <div class="post"><img src="images/naissance.jpg" alt=""><div><b>Séance naissance</b><span class="st draft">Brouillon</span></div></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="base"></div>
+          </div>
+
+          <div class="phone">
+            <div class="notch"></div>
+            <div class="phone-screen">
+              <div class="profile">
+                <div class="avatar"><img src="images/logo-mina.png" alt=""></div>
+                <div><b>mina.associees</b><span>Photographe &amp; Community Manager · Dordogne</span></div>
+              </div>
+              <div class="pbtn">Contacter</div>
+              <div class="feed">
+                <img src="images/moto-hero.jpg" alt=""><img src="images/grossesse.jpg" alt=""><img src="images/foot-duel.jpg" alt="">
+                <img src="images/famille-couple.jpg" alt=""><img src="images/motocross.jpg" alt=""><img src="images/mariage.jpg" alt="">
+                <img src="images/foot-10.jpg" alt=""><img src="images/grossesse-fleurs.jpg" alt=""><img src="images/naissance.jpg" alt="">
+              </div>
+            </div>
+          </div>
+
+          <div class="bubble b1">♥</div>
+          <div class="bubble b2">💬</div>
+        </div>
+      </div>
+
       <div class="notes">
         <div class="note">Création<br>de contenu</div>
         <div class="note">Identité<br>visuelle</div>
@@ -113,17 +130,37 @@
       </div>
     </section>
 
+    <!-- TARIFS -->
+    <section id="tarifs" class="section tarifs">
+      <h2 class="center">Tarifs</h2>
+      <p class="tarifs-lead">Sur devis&nbsp;: chaque prestation est différente.<br><span>Durée, lieu, nombre de photos ou de publications… on définit ensemble ce dont vous avez besoin.</span></p>
+      <div class="price-grid">
+        <div class="price"><h3>Séance grossesse</h3><p>Sur devis</p><a href="#contact" data-presta="Séance grossesse">Demander un devis</a></div>
+        <div class="price"><h3>Séance naissance</h3><p>Sur devis</p><a href="#contact" data-presta="Séance naissance">Demander un devis</a></div>
+        <div class="price"><h3>Famille &amp; couple</h3><p>Sur devis</p><a href="#contact" data-presta="Séance famille / couple">Demander un devis</a></div>
+        <div class="price"><h3>Mariage &amp; événements</h3><p>Sur devis</p><a href="#contact" data-presta="Mariage / événement">Demander un devis</a></div>
+        <div class="price"><h3>Photo de sport</h3><p>Sur devis</p><a href="#contact" data-presta="Photo de sport">Demander un devis</a></div>
+        <div class="price"><h3>Community management</h3><p>Sur devis</p><a href="#contact" data-presta="Community management">Demander un devis</a></div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
     <section id="contact" class="section contact">
       <div>
-        <h2>Réservez votre séance</h2>
+        <h2>Contact</h2>
         <p>Un projet photo, une question sur le community management&nbsp;? Écrivez-moi, je vous réponds rapidement.</p>
+        <ul class="contact-list">
+          <li>📍 Périgueux, Coursac et alentours</li>
+          <li>📱 <a href="tel:+33624792646">06.24.79.26.46</a></li>
+          <li>✉️ <a href="mailto:mina.associees@gmail.com">mina.associees@gmail.com</a></li>
+        </ul>
       </div>
-      <form class="form" action="mailto:mina.associees@gmail.com" method="post" enctype="text/plain">
-        <label>Nom<input type="text" name="nom" required></label>
-        <label>E-mail<input type="email" name="email" required></label>
-        <label>Téléphone<input type="tel" name="telephone"></label>
-        <label>Votre demande
-          <select name="prestation">
+      <form class="form" id="form" action="mailto:mina.associees@gmail.com" method="post" enctype="text/plain">
+        <label for="f-nom">Nom<input id="f-nom" type="text" name="nom" required></label>
+        <label for="f-email">E-mail<input id="f-email" type="email" name="email" required></label>
+        <label for="f-tel">Téléphone<input id="f-tel" type="tel" name="telephone"></label>
+        <label for="f-presta">Votre demande
+          <select id="f-presta" name="prestation">
             <option>Séance grossesse</option>
             <option>Séance naissance</option>
             <option>Séance famille / couple</option>
@@ -133,7 +170,7 @@
             <option>Autre</option>
           </select>
         </label>
-        <label>Message<textarea name="message" rows="5" required></textarea></label>
+        <label for="f-msg">Message<textarea id="f-msg" name="message" rows="5" required></textarea></label>
         <button type="submit" class="btn">Envoyer</button>
       </form>
     </section>
@@ -166,14 +203,126 @@
   </footer>
 
   <script>
+  (function () {
     document.getElementById('year').textContent = new Date().getFullYear();
-    const toggle = document.querySelector('.nav-toggle');
-    const links = document.querySelector('.nav-links');
-    toggle.addEventListener('click', () => {
-      const open = links.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open);
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* ---------- MENU ☰ ---------- */
+    const menu = document.getElementById('menu'), overlay = document.getElementById('menu-overlay');
+    const openBtn = document.getElementById('menu-open'), closeBtn = document.getElementById('menu-close');
+    function setMenu(open) {
+      menu.classList.toggle('open', open);
+      overlay.hidden = !open;
+      menu.setAttribute('aria-hidden', !open);
+      openBtn.setAttribute('aria-expanded', open);
+      document.body.classList.toggle('no-scroll', open);
+      if (open) closeBtn.focus(); else openBtn.focus();
+    }
+    openBtn.addEventListener('click', () => setMenu(true));
+    closeBtn.addEventListener('click', () => setMenu(false));
+    overlay.addEventListener('click', () => setMenu(false));
+    menu.querySelectorAll('.menu-links a').forEach(a => a.addEventListener('click', () => setMenu(false)));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && menu.classList.contains('open')) setMenu(false); });
+
+    /* ---------- CARROUSEL 3D PHOTO ---------- */
+    const slides = [
+      { img: 'grossesse.jpg', alt: 'Séance photo grossesse en couple', cat: 'Grossesse',
+        text: "Un nouveau chapitre commence. Immortalisons ensemble cette parenthèse unique, entre douceur, émotions et impatience de se rencontrer." },
+      { img: 'grossesse-fleurs.jpg', alt: 'Future maman souriante avec un bouquet de fleurs séchées', cat: 'Grossesse',
+        text: "Des images qui racontent vos histoires." },
+      { img: 'naissance.jpg', alt: 'Main de nouveau-né tenant un bracelet de perles', cat: 'Naissance',
+        text: "Les premiers jours passent si vite. Gardez une trace de ces instants précieux, des petits détails et de toute la tendresse de vos premiers moments ensemble." },
+      { img: 'famille-couple.jpg', alt: 'Couple souriant en noir et blanc', cat: 'Famille et couple',
+        text: "Des rires, des regards complices, des gestes spontanés… Des photos simples et authentiques pour raconter ce qui vous unit." },
+      { img: 'mariage.jpg', alt: 'Mariés riant ensemble devant une porte vitrée', cat: 'Mariage',
+        text: "Des préparatifs aux grands moments de partage, je capture les émotions et les petits instants que vous n'aurez pas envie d'oublier." },
+      { img: 'moto-hero.jpg', alt: 'Pilote de moto dans un nuage de fumée turquoise', cat: 'Sport',
+        text: "L'intensité d'une action, l'émotion d'une victoire, l'esprit d'équipe… Je photographie le sport au plus près de l'action, pour raconter chaque rencontre en images." },
+      { img: 'motocross.jpg', alt: 'Pilote de motocross en plein saut', cat: 'Sport',
+        text: "Au cœur de l'action, au plus près de l'émotion." },
+      { img: 'foot-duel.jpg', alt: 'Duel entre deux footballeurs', cat: 'Sport',
+        text: "Au cœur de l'action, au plus près de l'émotion." },
+      { img: 'foot-10.jpg', alt: 'Footballeur numéro 10 frappant le ballon', cat: 'Sport',
+        text: "L'intensité d'une action, l'esprit d'équipe…" },
+      { img: 'foot-equipe.jpg', alt: 'Équipe de football en maillots roses célébrant', cat: 'Sport',
+        text: "L'émotion au cœur du jeu." }
+    ];
+    const stage = document.getElementById('stage'), dotsBox = document.getElementById('dots');
+    const titleEl = document.getElementById('slide-title'), textEl = document.getElementById('slide-text');
+    const n = slides.length; let cur = 0;
+    const els = slides.map((s, i) => {
+      const el = document.createElement('figure');
+      el.className = 'slide';
+      el.innerHTML = '<img src="images/' + s.img + '" alt="' + s.alt + '"' + (i > 2 ? ' loading="lazy"' : '') + '>';
+      el.addEventListener('click', () => { if (i !== cur) { go(i); stop(); } });
+      stage.appendChild(el);
+      const d = document.createElement('button');
+      d.className = 'dot'; d.setAttribute('aria-label', 'Photo ' + (i + 1));
+      d.addEventListener('click', () => { go(i); stop(); });
+      dotsBox.appendChild(d);
+      return el;
     });
-    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+    const dots = [...dotsBox.children];
+    const cats = [...document.querySelectorAll('.cat')];
+
+    function render() {
+      const narrow = stage.clientWidth < 560;
+      els.forEach((el, i) => {
+        let o = i - cur;
+        if (o > n / 2) o -= n; if (o < -n / 2) o += n;
+        const a = Math.abs(o);
+        const x = o * (narrow ? 42 : 58), z = -a * (narrow ? 140 : 200), ry = -Math.sign(o) * Math.min(a, 2) * 28;
+        el.style.transform = 'translateX(' + x + '%) translateZ(' + z + 'px) rotateY(' + ry + 'deg)';
+        el.style.opacity = a > 2 ? 0 : 1 - a * 0.18;
+        el.style.zIndex = 10 - a;
+        el.style.pointerEvents = a > 2 ? 'none' : '';
+        el.classList.toggle('active', o === 0);
+        el.setAttribute('aria-hidden', o !== 0);
+      });
+      dots.forEach((d, i) => d.classList.toggle('active', i === cur));
+      const s = slides[cur];
+      titleEl.textContent = s.cat === 'Mariage' ? 'Mariage & événements' : s.cat;
+      textEl.textContent = s.text;
+      cats.forEach(c => { const on = c.dataset.cat === s.cat; c.classList.toggle('active', on); c.setAttribute('aria-selected', on); });
+    }
+    function go(i) { cur = (i + n) % n; render(); }
+    document.querySelector('.arrow.prev').addEventListener('click', () => { go(cur - 1); stop(); });
+    document.querySelector('.arrow.next').addEventListener('click', () => { go(cur + 1); stop(); });
+    cats.forEach(c => c.addEventListener('click', () => { go(slides.findIndex(s => s.cat === c.dataset.cat)); stop(); }));
+    stage.closest('.carousel').addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft') { go(cur - 1); stop(); }
+      if (e.key === 'ArrowRight') { go(cur + 1); stop(); }
+    });
+    let sx = null;
+    stage.addEventListener('pointerdown', e => { sx = e.clientX; });
+    stage.addEventListener('pointerup', e => {
+      if (sx === null) return; const dx = e.clientX - sx; sx = null;
+      if (Math.abs(dx) > 40) { go(cur + (dx < 0 ? 1 : -1)); stop(); }
+    });
+    let timer = null;
+    function stop() { clearInterval(timer); timer = null; }
+    if (!reduce) timer = setInterval(() => go(cur + 1), 4500);
+    stage.addEventListener('mouseenter', stop);
+    window.addEventListener('resize', render);
+    render();
+
+    /* ---------- SCÈNE 3D COMMUNITY ---------- */
+    const scene = document.getElementById('scene'), rig = document.getElementById('rig');
+    if (!reduce) {
+      scene.addEventListener('pointermove', e => {
+        const r = scene.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5;
+        rig.style.setProperty('--ry', (-12 + px * 16) + 'deg');
+        rig.style.setProperty('--rx', (8 - py * 10) + 'deg');
+      });
+      scene.addEventListener('pointerleave', () => { rig.style.removeProperty('--ry'); rig.style.removeProperty('--rx'); });
+    }
+
+    /* ---------- TARIFS → formulaire ---------- */
+    document.querySelectorAll('[data-presta]').forEach(a => a.addEventListener('click', () => {
+      document.getElementById('f-presta').value = a.dataset.presta;
+    }));
+  })();
   </script>
 </body>
 </html>
