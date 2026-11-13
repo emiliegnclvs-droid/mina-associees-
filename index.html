@@ -232,10 +232,14 @@
           <li>✉️ <a href="mailto:mina.associees@gmail.com">mina.associees@gmail.com</a></li>
         </ul>
       </div>
-      <form class="form" id="form" action="mailto:mina.associees@gmail.com" method="post" enctype="text/plain">
-        <label for="f-nom">Nom<input id="f-nom" type="text" name="nom" required></label>
-        <label for="f-email">E-mail<input id="f-email" type="email" name="email" required></label>
-        <label for="f-tel">Téléphone<input id="f-tel" type="tel" name="telephone"></label>
+      <form class="form" id="form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="7adf8ac9-e22f-4f2f-ac89-9f493265bc87">
+        <input type="hidden" name="subject" value="Nouveau message depuis le site Mina Associées">
+        <input type="hidden" name="from_name" value="Site Mina Associées">
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <label for="f-nom">Nom<input id="f-nom" type="text" name="name" autocomplete="name" required></label>
+        <label for="f-email">E-mail<input id="f-email" type="email" name="email" autocomplete="email" required></label>
+        <label for="f-tel">Téléphone<input id="f-tel" type="tel" name="telephone" autocomplete="tel"></label>
         <label for="f-presta">Votre demande
           <select id="f-presta" name="prestation">
             <option class="noel-only">Séance photo de Noël</option>
@@ -250,7 +254,8 @@
           </select>
         </label>
         <label for="f-msg">Message<textarea id="f-msg" name="message" rows="5" required></textarea></label>
-        <button type="submit" class="btn">Envoyer</button>
+        <button type="submit" class="btn" id="f-send">Envoyer</button>
+        <p class="form-status" id="f-status" role="status" hidden></p>
       </form>
     </section>
   </main>
@@ -398,6 +403,27 @@
     if (new Date() > new Date(2026, 11, 18, 23, 59, 59)) {
       document.querySelectorAll('.noel-only').forEach(el => el.remove());
     }
+
+    /* ---------- FORMULAIRE → Web3Forms (e-mail vers mina.associees@gmail.com) ---------- */
+    const form = document.getElementById('form'), sendBtn = document.getElementById('f-send'), status = document.getElementById('f-status');
+    form.addEventListener('submit', async e => {
+      e.preventDefault();
+      sendBtn.disabled = true; sendBtn.textContent = 'Envoi en cours…';
+      status.hidden = true; status.className = 'form-status';
+      try {
+        const res = await fetch(form.action, { method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(form) });
+        const data = await res.json();
+        if (!res.ok || !data.success) throw new Error(data.message || 'Erreur');
+        form.reset();
+        status.textContent = 'Merci, votre message a bien été envoyé ! Nous vous répondons rapidement.';
+        status.classList.add('ok');
+      } catch (err) {
+        status.textContent = "Le message n'a pas pu être envoyé. Réessayez dans un instant ou appelez-nous au 06.24.79.26.46 / 06.66.92.64.10.";
+        status.classList.add('err');
+      }
+      status.hidden = false;
+      sendBtn.disabled = false; sendBtn.textContent = 'Envoyer';
+    });
 
     /* ---------- TARIFS → formulaire ---------- */
     document.querySelectorAll('[data-presta]').forEach(a => a.addEventListener('click', () => {

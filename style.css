@@ -230,6 +230,12 @@ h3 { font-family: var(--sans); font-weight: 400; font-size: 1.5rem; margin-botto
 .form input:focus, .form select:focus, .form textarea:focus { outline: 2px solid var(--plum); border-color: transparent; }
 .btn { justify-self: start; background: var(--plum); color: #fff; border: 0; padding: 13px 34px; font: inherit; font-size: 1rem; cursor: pointer; letter-spacing: .5px; }
 .btn:hover { background: var(--plum-soft); }
+.btn:disabled { opacity: .6; cursor: wait; }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.form { position: relative; }
+.form-status { padding: 14px 16px; font-weight: 500; }
+.form-status.ok { background: #e2efe3; color: #2f5e37; }
+.form-status.err { background: #f6e1e6; color: #8a1f3d; }
 
 /* ---------- FOOTER ---------- */
 .footer { background: var(--plum); color: #fff; padding-block: 70px 30px; padding-left: max(6vw, 16px); padding-right: max(6vw, 16px); border-top: 1px solid rgba(244,233,238,.15); }
