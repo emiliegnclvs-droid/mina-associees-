@@ -179,15 +179,36 @@ h3 { font-family: var(--sans); font-weight: 400; font-size: 1.5rem; margin-botto
 @keyframes float { 0%,100% { transform: translateZ(14cqw) rotateY(-6deg) translateY(0); } 50% { transform: translateZ(14cqw) rotateY(-6deg) translateY(-1.6cqw); } }
 @keyframes pop { 0%,100% { transform: translateZ(22cqw) translateY(0) scale(1); } 50% { transform: translateZ(22cqw) translateY(-1.5cqw) scale(1.08); } }
 
-.notes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; max-width: 1100px; margin: 0 auto; }
-.note { position: relative; background: var(--paper); aspect-ratio: 1; display: flex; align-items: center; justify-content: center;
-  text-align: center; font-family: var(--display); font-size: clamp(1.3rem, 2.2vw, 2rem); line-height: 1.1;
-  box-shadow: 0 6px 18px rgba(64,0,33,.1); transition: transform .35s; }
-.note:nth-child(odd) { transform: rotate(-2deg); }
-.note:nth-child(even) { transform: rotate(2deg); margin-top: 50px; }
-.note:hover { transform: rotate(0) translateY(-6px); }
-.note::before { content: ''; position: absolute; top: -14px; left: 50%; width: 46%; height: 30px; transform: translateX(-50%) rotate(-3deg);
-  background: rgba(220,224,216,.75); border: 1px solid rgba(190,195,185,.6); }
+
+/* services, plus, étapes */
+.cm-block { max-width: 1100px; margin: 0 auto 70px; }
+.cm-h { font-family: var(--display); font-size: clamp(1.7rem, 3vw, 2.3rem); text-align: center; margin-bottom: 34px; }
+.services { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.service { background: var(--cream); border: 1px solid rgba(107,35,72,.3); padding: 28px 24px; display: grid; gap: 10px; align-content: start;
+  transition: transform .3s, box-shadow .3s, border-color .3s; }
+.service:hover { transform: translateY(-6px); box-shadow: 0 20px 40px -24px rgba(64,0,33,.5); border-color: var(--line); }
+.service svg { width: 40px; height: 40px; fill: none; stroke: var(--plum); stroke-width: 1.4; stroke-linecap: round; stroke-linejoin: round;
+  background: var(--rose); border-radius: 50%; padding: 8px; box-sizing: content-box; }
+.service h4 { font-family: var(--display); font-weight: 400; font-size: 1.45rem; line-height: 1.15; }
+.service p { font-size: .98rem; }
+.service ul { list-style: none; border-top: 1px solid rgba(107,35,72,.2); padding-top: 10px; display: grid; gap: 6px; font-size: .92rem; }
+.service li { padding-left: 16px; position: relative; }
+.service li::before { content: ''; position: absolute; left: 0; top: .62em; width: 7px; height: 1px; background: var(--plum); }
+.cm-plus { max-width: 1100px; margin: 0 auto 70px; background: var(--plum); color: var(--rose); padding: 40px clamp(22px, 5vw, 60px);
+  display: grid; grid-template-columns: auto 1fr; gap: 10px 40px; align-items: center; }
+.cm-plus-k { text-transform: uppercase; letter-spacing: 2px; font-size: .8rem; border: 1px solid rgba(244,233,238,.5); padding: 6px 14px; white-space: nowrap; }
+.cm-plus-t { font-family: var(--display); font-size: clamp(1.2rem, 2.1vw, 1.6rem); line-height: 1.35; color: #fff; }
+.cm-plus-t em { color: #e9b9cd; }
+.steps { list-style: none; counter-reset: s; display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; position: relative; }
+.steps::before { content: ''; position: absolute; top: 24px; left: 12%; right: 12%; height: 1px; background: rgba(107,35,72,.35); }
+.steps li { counter-increment: s; text-align: center; display: grid; gap: 8px; align-content: start; justify-items: center; position: relative; }
+.steps li::before { content: counter(s); width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: var(--cream);
+  border: 1px solid var(--line); font-family: var(--display); font-size: 1.4rem; }
+.steps b { font-weight: 500; font-size: 1.1rem; }
+.steps span { font-size: .95rem; max-width: 240px; }
+.cm-for { text-align: center; display: grid; gap: 20px; justify-items: center; }
+.cm-for p { font-size: 1.1rem; max-width: 620px; }
+.cm-for .btn { justify-self: center; text-decoration: none; }
 
 /* ---------- TARIFS ---------- */
 .tarifs { background: var(--plum); color: var(--rose); }
@@ -232,8 +253,9 @@ h3 { font-family: var(--sans); font-weight: 400; font-size: 1.5rem; margin-botto
   .section { padding-block: 60px; }
   .contact, .footer-boxes { grid-template-columns: 1fr; }
   .price-grid { grid-template-columns: 1fr 1fr; }
-  .notes { grid-template-columns: 1fr 1fr; gap: 28px; }
-  .note:nth-child(even) { margin-top: 30px; }
+  .services { grid-template-columns: 1fr 1fr; }
+  .steps { grid-template-columns: 1fr 1fr; row-gap: 34px; }
+  .steps::before { display: none; }
   .community { overflow-x: clip; }
   .arrow { width: 40px; height: 40px; font-size: 1.6rem; }
   .form { padding: 22px; }
@@ -244,6 +266,9 @@ h3 { font-family: var(--sans); font-weight: 400; font-size: 1.5rem; margin-botto
   .noel { grid-template-columns: 1fr; gap: 40px; }
 }
 @media (max-width: 560px) {
+  .services, .steps { grid-template-columns: 1fr; }
+  .cm-plus { grid-template-columns: 1fr; }
+  .cm-plus-k { justify-self: start; }
   .offers { gap: 14px; }
   .offer { padding: 20px 12px; }
   .offer-price { font-size: 2.1rem; }
