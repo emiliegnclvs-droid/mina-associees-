@@ -226,15 +226,17 @@
 
     /* ---------- CARROUSEL 3D PHOTO ---------- */
     const slides = [
-      { img: 'grossesse.jpg', alt: 'Séance photo grossesse en couple', cat: 'Grossesse',
+      { img: 'grossesse.jpg', pos: '50% 30%', alt: 'Séance photo grossesse en couple', cat: 'Grossesse',
         text: "Un nouveau chapitre commence. Immortalisons ensemble cette parenthèse unique, entre douceur, émotions et impatience de se rencontrer." },
+      { img: 'grossesse-blanc.jpg', alt: 'Future maman en blanc blottie contre son compagnon qui tient un doudou', cat: 'Grossesse',
+        text: "Douceur, tendresse et impatience : les derniers moments à deux avant l'arrivée de bébé." },
       { img: 'grossesse-fleurs.jpg', alt: 'Future maman souriante avec un bouquet de fleurs séchées', cat: 'Grossesse',
         text: "Des images qui racontent vos histoires." },
       { img: 'naissance.jpg', alt: 'Main de nouveau-né tenant un bracelet de perles', cat: 'Naissance',
         text: "Les premiers jours passent si vite. Gardez une trace de ces instants précieux, des petits détails et de toute la tendresse de vos premiers moments ensemble." },
       { img: 'famille-couple.jpg', alt: 'Couple souriant en noir et blanc', cat: 'Famille et couple',
         text: "Des rires, des regards complices, des gestes spontanés… Des photos simples et authentiques pour raconter ce qui vous unit." },
-      { img: 'mariage.jpg', alt: 'Mariés riant ensemble devant une porte vitrée', cat: 'Mariage',
+      { img: 'mariage.jpg', pos: '50% 60%', alt: 'Mariés riant ensemble devant une porte vitrée', cat: 'Mariage',
         text: "Des préparatifs aux grands moments de partage, je capture les émotions et les petits instants que vous n'aurez pas envie d'oublier." },
       { img: 'moto-hero.jpg', alt: 'Pilote de moto dans un nuage de fumée turquoise', cat: 'Sport',
         text: "L'intensité d'une action, l'émotion d'une victoire, l'esprit d'équipe… Je photographie le sport au plus près de l'action, pour raconter chaque rencontre en images." },
@@ -253,7 +255,7 @@
     const els = slides.map((s, i) => {
       const el = document.createElement('figure');
       el.className = 'slide';
-      el.innerHTML = '<img src="images/' + s.img + '" alt="' + s.alt + '"' + (i > 2 ? ' loading="lazy"' : '') + '>';
+      el.innerHTML = '<img src="images/' + s.img + '" alt="' + s.alt + '"' + (s.pos ? ' style="object-position:' + s.pos + '"' : '') + (i > 2 ? ' loading="lazy"' : '') + '>';
       el.addEventListener('click', () => { if (i !== cur) { go(i); stop(); } });
       stage.appendChild(el);
       const d = document.createElement('button');
