@@ -1,5 +1,6 @@
 """Calcule le minutage du Reel d'après la durée réelle de chaque phrase de voix off,
 puis réécrit index.html (scènes + pistes audio), les constantes K de chaque scène et la musique.
+La voix off sert seulement au rythme : elle n’est plus mixée dans la vidéo.
 Usage : python3 tools/minutage.py   (depuis reel-bouthier/)"""
 import json, re, subprocess
 
@@ -50,13 +51,29 @@ for sid, a, d in scenes:
 h = re.sub(r'(<div id="cadre"[^>]*?data-duration=")[0-9.]+', lambda m: m.group(1) + str(TOTAL), h, flags=re.S)
 # Pistes audio : voix, musique, bruitages calés sur les coupes.
 h = re.sub(r"\n\s*<audio id=\"(voix|musique|sfx)[^\n]*</audio>", "", h)
-starts = [a for _, a, _ in scenes]
-sfx = [("sfx-w1", "whoosh.mp3", starts[1] - 0.15, 0.5, 5), ("sfx-w2", "whoosh-short.mp3", starts[2] - 0.1, 0.5, 5),
-       ("sfx-w3", "whoosh-cinematic.mp3", starts[3] - 0.15, 0.45, 6), ("sfx-w4", "whoosh.mp3", starts[3] + K["ecrans"]["L"] - 0.25, 0.5, 5),
-       ("sfx-w5", "whoosh-short.mp3", starts[4] - 0.1, 0.5, 6), ("sfx-impact", "impact-bass-1.mp3", starts[5] + 0.05, 0.6, 5)]
-tags = [f'      <audio id="musique" class="clip" src="assets/bgm/musique.wav" data-duration="{TOTAL}" data-start="0" data-track-index="4" data-volume="0.3"></audio>']
-tags += [f'      <audio id="voix-{i}" class="clip" src="assets/voice/{i}.wav" data-duration="{r(V[i]) if False else round(V[i],3)}" data-start="{r(a)}" data-track-index="3" data-volume="1.2"></audio>' for i, a in voix]
-tags += [f'      <audio id="{i}" class="clip" src="assets/sfx/{f}" data-duration="{round(dur("assets/sfx/" + f), 3)}" data-start="{r(a)}" data-track-index="{tr}" data-volume="{v}"></audio>' for i, f, a, v, tr in sfx]
+starts = dict((sid, a) for sid, a, _ in scenes)
+# Bruitages : (scène, instant local où le son doit frapper, fichier, volume). Le clip est avancé de son pic.
+PIC = {"whoosh.mp3": 0.164, "whoosh-short.mp3": 0.164, "whoosh-cinematic.mp3": 2.55, "pop.mp3": 0.122,
+       "click-soft.mp3": 0.075, "sparkle.mp3": 0.03, "impact-bass-1.mp3": 1.956, "impact-bass-2.mp3": 2.066}
+E, M, C, F = K["equipe"], K["metiers"], K["ecrans"], K["fin"]
+ev = [("intro", 1.3, "whoosh-cinematic.mp3", 0.45), ("intro", 1.15, "pop.mp3", 0.7), ("intro", K["intro"]["D"] - 0.15, "whoosh.mp3", 0.8),
+      ("equipe", 0.35, "whoosh-short.mp3", 0.7), ("equipe", E["r1"] + 0.2, "whoosh.mp3", 0.75), ("equipe", E["r2"] + 0.2, "whoosh-short.mp3", 0.75),
+      ("equipe", E["r3"] + 0.2, "whoosh.mp3", 0.75), ("equipe", E["pin"] + 0.45, "pop.mp3", 0.85), ("equipe", E["pin"] + 0.55, "click-soft.mp3", 0.7),
+      ("equipe", E["D"] - 0.15, "whoosh-short.mp3", 0.8),
+      ("metiers", 0.3, "whoosh.mp3", 0.8), ("metiers", 0.45, "pop.mp3", 0.6), ("metiers", M["D"] - 0.2, "whoosh.mp3", 0.8)]
+ev += [("metiers", M["T"][i] - 0.05, "whoosh.mp3" if i % 2 else "whoosh-short.mp3", 0.6) for i in range(1, 8)]
+ev += [("ecrans", 0.35, "whoosh.mp3", 0.8), ("ecrans", 0.75, "click-soft.mp3", 0.8), ("ecrans", 1.65, "pop.mp3", 0.7),
+       ("ecrans", C["L"] - 0.05, "whoosh-short.mp3", 0.8), ("ecrans", C["L"] + 0.2, "whoosh.mp3", 0.7), ("ecrans", C["ig"] + 0.15, "pop.mp3", 0.7),
+       ("ecrans", C["D"] - 0.15, "whoosh-short.mp3", 0.8),
+       ("chantiers", K["chantiers"]["D"] * 0.5, "whoosh-cinematic.mp3", 0.5), ("chantiers", 0.4, "pop.mp3", 0.6), ("chantiers", K["chantiers"]["b2"] + 0.1, "pop.mp3", 0.6),
+       ("fin", 0.45, "impact-bass-1.mp3", 0.8), ("fin", 0.55, "sparkle.mp3", 0.5), ("fin", F["devis"] + 0.2, "pop.mp3", 0.8), ("fin", F["tel"] + 0.08, "click-soft.mp3", 0.8)]
+clips = sorted((r(max(0, starts[sc] + t - PIC[f])), f, v) for sc, t, f, v in ev)
+fins = {}  # piste -> fin du dernier clip, pour éviter les chevauchements sur une même piste
+tags = [f'      <audio id="musique" class="clip" src="assets/bgm/musique.wav" data-duration="{TOTAL}" data-start="0" data-track-index="4" data-volume="0.75"></audio>']
+for n, (a, f, v) in enumerate(clips):
+    d = round(dur("assets/sfx/" + f), 3)
+    tr = next(k for k in range(5, 40) if fins.get(k, -1) <= a); fins[tr] = a + d
+    tags.append(f'      <audio id="sfx-{n+1:02d}" class="clip" src="assets/sfx/{f}" data-duration="{d}" data-start="{a}" data-track-index="{tr}" data-volume="{v}"></audio>')
 h = h.replace("    </div>\n    <script>", "\n".join(tags) + "\n    </div>\n    <script>", 1)
 open("index.html", "w").write(h)
 
