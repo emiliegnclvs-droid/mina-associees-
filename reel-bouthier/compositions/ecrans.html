@@ -34,6 +34,7 @@
       border: 3px solid rgba(255,255,255,0.6); }
     #ec-t1w { top: 250px; } #ec-u1w { top: 1420px; }
     #ec-t2w { top: 210px; } #ec-u2w { top: 1530px; }
+    #ec-u2 { font-size: 50px; }
   </style>
   <div id="root" data-composition-id="ecrans" data-width="1080" data-height="1920">
     <div id="ec-fond" data-layout-ignore>
@@ -59,14 +60,14 @@
     <div id="ec-t1w" class="bande-wrap"><div id="ec-t1" class="ec-bande">Nos réalisations en ligne</div></div>
     <div id="ec-u1w" class="bande-wrap"><div id="ec-u1" class="ec-bande ec-url" data-var-text="site">bouthier-sols.fr</div></div>
     <div id="ec-t2w" class="bande-wrap"><div id="ec-t2" class="ec-bande">Suivez nos chantiers</div></div>
-    <div id="ec-u2w" class="bande-wrap"><div id="ec-u2" class="ec-bande ec-url">sur Instagram</div></div>
+    <div id="ec-u2w" class="bande-wrap"><div id="ec-u2" class="ec-bande ec-url">sur Instagram &amp; Facebook</div></div>
   </div>
   <script>
     // Volumes : la base de l'ordinateur est posée à plat, l'écran est articulé sur son bord bas.
     gsap.set("#ec-base", { rotationX: 90, transformOrigin: "50% 0%" });
     gsap.set("#ec-ecran", { transformOrigin: "50% 100%" });
     gsap.set("#ec-tel-c1", { z: -8 }); gsap.set("#ec-tel-c2", { z: -16 }); gsap.set("#ec-tel-c3", { z: -24 });
-    const K = /*K*/{"D": 6.24, "L": 3.16, "url": 1.5, "ig": 4.99}/*K*/;
+    const K = /*K*/{"D": 6.24, "L": 3.16, "url": 1.5, "ig": 3.76}/*K*/;
     const tl = gsap.timeline({ paused: true });
     tl.fromTo("#ec-fond", { opacity: 0 }, { opacity: 1, duration: 0.25 }, 0);
     // --- L'ordinateur arrive en tournant, s'ouvre, le site défile. ---

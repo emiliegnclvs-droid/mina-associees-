@@ -30,7 +30,7 @@ D = t + 0.35; scenes.append(("metiers", t0, D)); K["metiers"] = {"D": r(D), "T":
 # 4. Écrans (ordinateur puis téléphone)
 t0 += D; voix.append(("d1", t0 + 0.4)); L = 0.4 + V["d1"] + 0.4
 voix.append(("d2", t0 + L + 0.3)); D = L + 0.3 + V["d2"] + 0.8
-scenes.append(("ecrans", t0, D)); K["ecrans"] = {"D": r(D), "L": r(L), "url": 1.5, "ig": r(L + 0.35 + V["d2"] * 0.75)}
+scenes.append(("ecrans", t0, D)); K["ecrans"] = {"D": r(D), "L": r(L), "url": 1.5, "ig": r(L + 0.6)}
 # 5. Chantiers
 t0 += D; voix.append(("e1", t0 + 0.35)); D = max(3.4, 0.35 + V["e1"] + 0.6)
 scenes.append(("chantiers", t0, D)); K["chantiers"] = {"D": r(D), "b1": 0.3, "b2": r(0.35 + V["e1"] * 0.45)}
