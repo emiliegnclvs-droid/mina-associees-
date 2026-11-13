@@ -54,6 +54,48 @@ h3 { font-family: var(--sans); font-weight: 400; font-size: 1.5rem; margin-botto
 .box { border: 1px solid var(--line); padding: 24px 26px 28px; }
 .box p { font-weight: 500; }
 
+/* ---------- OFFRE DE NOËL ---------- */
+.noel-strip { display: block; text-align: center; background: var(--rose); color: var(--plum); text-decoration: none; font-size: .92rem;
+  padding: 8px max(16px, env(safe-area-inset-right, 0px)) 8px max(16px, env(safe-area-inset-left, 0px)); }
+.noel-strip:hover u { color: var(--plum-soft); }
+.noel { position: relative; overflow: hidden; background: radial-gradient(ellipse at 80% 30%, #5e0a35, var(--plum-ink) 70%); color: var(--rose);
+  display: grid; grid-template-columns: 1fr 1.05fr; gap: 6vw; align-items: center; }
+.noel-text { position: relative; z-index: 2; }
+.noel-date { display: inline-block; border: 1px solid rgba(244,233,238,.5); padding: 5px 16px; letter-spacing: 2px; text-transform: uppercase; font-size: .8rem; margin-bottom: 18px; }
+.noel h2 { color: #fff; margin-bottom: 12px; font-size: clamp(2.4rem, 5vw, 4rem); }
+.noel-sub { font-size: 1.1rem; opacity: .85; margin-bottom: 30px; }
+.offers { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; max-width: 520px; }
+.offer { position: relative; background: var(--cream); color: var(--plum); padding: 24px 22px; display: grid; gap: 4px; text-align: center;
+  box-shadow: 0 18px 40px -18px rgba(0,0,0,.6); }
+.offer-name { text-transform: uppercase; letter-spacing: 2px; font-size: .8rem; font-weight: 600; }
+.offer-qty { font-size: 1.05rem; }
+.offer-price { font-family: var(--display); font-size: 2.6rem; line-height: 1.1; }
+.offer-best { outline: 2px solid #c98b6b; outline-offset: 4px; }
+.offer-badge { position: absolute; top: -16px; right: -12px; background: #b3243f; color: #fff; font-weight: 600; font-size: .9rem;
+  width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center; transform: rotate(12deg); }
+.noel-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 18px; margin-top: 34px; }
+.btn-light { background: var(--cream); color: var(--plum); text-decoration: none; padding: 13px 30px; font-weight: 500; letter-spacing: .5px; transition: .25s; }
+.btn-light:hover { background: #fff; }
+.noel-cta a[href^="tel"] { color: #fff; }
+.noel-photos { position: relative; z-index: 2; aspect-ratio: 5 / 4; perspective: 1200px; }
+.np { position: absolute; object-fit: cover; box-shadow: 0 30px 60px -20px rgba(0,0,0,.7); transition: transform .6s; }
+.np-back { width: 62%; aspect-ratio: 4 / 3; right: 0; top: 0; transform: rotateY(-14deg) rotateZ(2deg); outline: 6px solid var(--cream); }
+.np-front { width: 70%; aspect-ratio: 3 / 2; left: 0; bottom: 0; transform: rotateY(10deg) rotateZ(-2deg) translateZ(40px); outline: 6px solid var(--cream); }
+.noel-photos:hover .np-back { transform: rotateY(-6deg) rotateZ(1deg); }
+.noel-photos:hover .np-front { transform: rotateY(4deg) rotateZ(-1deg) translateZ(60px); }
+.snow { position: absolute; inset: 0; pointer-events: none; z-index: 1; }
+.snow i { position: absolute; top: -10px; width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,.75); opacity: .7; }
+.snow i:nth-child(1){left:5%} .snow i:nth-child(2){left:14%;width:4px;height:4px} .snow i:nth-child(3){left:23%}
+.snow i:nth-child(4){left:31%;width:3px;height:3px} .snow i:nth-child(5){left:40%} .snow i:nth-child(6){left:48%;width:4px;height:4px}
+.snow i:nth-child(7){left:57%} .snow i:nth-child(8){left:65%;width:3px;height:3px} .snow i:nth-child(9){left:73%}
+.snow i:nth-child(10){left:82%;width:4px;height:4px} .snow i:nth-child(11){left:90%} .snow i:nth-child(12){left:96%;width:3px;height:3px}
+@media (prefers-reduced-motion: no-preference) {
+  .snow i { animation: snow 11s linear infinite; }
+  .snow i:nth-child(odd) { animation-duration: 14s; }
+  .snow i:nth-child(3n) { animation-delay: -4s; } .snow i:nth-child(3n+1) { animation-delay: -8s; } .snow i:nth-child(4n) { animation-delay: -2s; }
+}
+@keyframes snow { to { transform: translate(30px, 900px); } }
+
 /* ---------- PHOTOGRAPHIE : carrousel 3D ---------- */
 .intro-text { font-family: var(--display); font-size: clamp(1.3rem, 2.4vw, 1.9rem); line-height: 1.35; text-align: center; max-width: 760px; margin: 0 auto 36px; text-wrap: balance; }
 .cats { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 30px; }
@@ -198,7 +240,14 @@ h3 { font-family: var(--sans); font-weight: 400; font-size: 1.5rem; margin-botto
   .footer { padding-block: 50px 24px; }
   .footer-box { padding: 24px; }
 }
+@media (max-width: 900px) {
+  .noel { grid-template-columns: 1fr; gap: 40px; }
+}
 @media (max-width: 560px) {
+  .offers { gap: 14px; }
+  .offer { padding: 20px 12px; }
+  .offer-price { font-size: 2.1rem; }
+  .np { outline-width: 4px; }
   .price-grid { grid-template-columns: 1fr; }
   .carousel { --sw: 62vw; }
   .slide-info { margin-top: 30px; padding: 20px; }

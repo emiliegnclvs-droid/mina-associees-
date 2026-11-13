@@ -12,6 +12,8 @@
 </head>
 <body>
 
+  <a href="#noel" class="noel-strip noel-only">✨ Séances photo de Noël jusqu'au 18 décembre · <u>Voir l'offre</u></a>
+
   <header class="nav">
     <a href="#accueil" class="nav-logo"><img src="images/logo-mina.png" alt="Mina Associées — accueil"></a>
     <button class="burger" id="menu-open" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu">
@@ -42,6 +44,38 @@
       <p class="banner-tagline">Photographe &amp; Community Manager</p>
     </section>
 
+
+    <!-- OFFRE DE NOËL (masquée automatiquement après le 18 décembre) -->
+    <section id="noel" class="section noel noel-only">
+      <div class="snow" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="noel-text">
+        <p class="noel-date">Jusqu'au 18 décembre</p>
+        <h2>Séance photo de Noël</h2>
+        <p class="noel-sub">Seul ou en famille · Séance de 30 minutes · à Coursac</p>
+        <div class="offers">
+          <div class="offer">
+            <span class="offer-name">Offre 1</span>
+            <span class="offer-qty">6 photos en HD</span>
+            <span class="offer-price">50&nbsp;€</span>
+          </div>
+          <div class="offer offer-best">
+            <span class="offer-badge">−10&nbsp;%</span>
+            <span class="offer-name">Offre 2</span>
+            <span class="offer-qty">12 photos en HD</span>
+            <span class="offer-price">90&nbsp;€</span>
+          </div>
+        </div>
+        <div class="noel-cta">
+          <a href="#contact" class="btn-light" data-presta="Séance photo de Noël">Réserver ma séance</a>
+          <span>ou au <a href="tel:+33624792646">06.24.79.26.46</a></span>
+        </div>
+      </div>
+      <div class="noel-photos">
+        <img src="images/noel-decor.jpg" alt="Décor de Noël du studio : cheminée, sapin, cadeaux et oursons" class="np np-back">
+        <img src="images/noel-chien.jpg" alt="Petit chien blanc devant le décor de Noël" class="np np-front">
+      </div>
+    </section>
+
     <!-- PHOTOGRAPHIE -->
     <section id="photographie" class="section photo">
       <h2 class="center">Photographie</h2>
@@ -50,7 +84,6 @@
       <div class="cats" role="tablist" aria-label="Catégories de photos">
         <button class="cat" data-cat="Grossesse">Grossesse</button>
         <button class="cat" data-cat="Naissance">Naissance</button>
-        <button class="cat" data-cat="Famille et couple">Famille &amp; couple</button>
         <button class="cat" data-cat="Mariage">Mariage</button>
         <button class="cat" data-cat="Sport">Sport</button>
       </div>
@@ -111,7 +144,7 @@
               <div class="pbtn">Contacter</div>
               <div class="feed">
                 <img src="images/moto-hero.jpg" alt=""><img src="images/grossesse.jpg" alt=""><img src="images/foot-duel.jpg" alt="">
-                <img src="images/famille-couple.jpg" alt=""><img src="images/motocross.jpg" alt=""><img src="images/mariage.jpg" alt="">
+                <img src="images/grossesse-blanc.jpg" alt=""><img src="images/motocross.jpg" alt=""><img src="images/mariage.jpg" alt="">
                 <img src="images/foot-10.jpg" alt=""><img src="images/grossesse-fleurs.jpg" alt=""><img src="images/naissance.jpg" alt="">
               </div>
             </div>
@@ -161,6 +194,7 @@
         <label for="f-tel">Téléphone<input id="f-tel" type="tel" name="telephone"></label>
         <label for="f-presta">Votre demande
           <select id="f-presta" name="prestation">
+            <option class="noel-only">Séance photo de Noël</option>
             <option>Séance grossesse</option>
             <option>Séance naissance</option>
             <option>Séance famille / couple</option>
@@ -234,8 +268,6 @@
         text: "Des images qui racontent vos histoires." },
       { img: 'naissance.jpg', alt: 'Main de nouveau-né tenant un bracelet de perles', cat: 'Naissance',
         text: "Les premiers jours passent si vite. Gardez une trace de ces instants précieux, des petits détails et de toute la tendresse de vos premiers moments ensemble." },
-      { img: 'famille-couple.jpg', alt: 'Couple souriant en noir et blanc', cat: 'Famille et couple',
-        text: "Des rires, des regards complices, des gestes spontanés… Des photos simples et authentiques pour raconter ce qui vous unit." },
       { img: 'mariage.jpg', pos: '50% 60%', alt: 'Mariés riant ensemble devant une porte vitrée', cat: 'Mariage',
         text: "Des préparatifs aux grands moments de partage, je capture les émotions et les petits instants que vous n'aurez pas envie d'oublier." },
       { img: 'moto-hero.jpg', alt: 'Pilote de moto dans un nuage de fumée turquoise', cat: 'Sport',
@@ -318,6 +350,11 @@
         rig.style.setProperty('--rx', (8 - py * 10) + 'deg');
       });
       scene.addEventListener('pointerleave', () => { rig.style.removeProperty('--ry'); rig.style.removeProperty('--rx'); });
+    }
+
+    /* ---------- OFFRE DE NOËL : disparaît après le 18 décembre 2026 ---------- */
+    if (new Date() > new Date(2026, 11, 18, 23, 59, 59)) {
+      document.querySelectorAll('.noel-only').forEach(el => el.remove());
     }
 
     /* ---------- TARIFS → formulaire ---------- */
